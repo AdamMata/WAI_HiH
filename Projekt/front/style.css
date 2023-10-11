@@ -20,20 +20,33 @@ body {
 nav {
     float: left;
     flex: 1;
-    margin-right: 3vw;
-    padding-right: 2vw;
-    padding-left: 2vw;
-    min-width: 110px;
-    position: sticky;
+    margin: 3vw;
+    min-width: 120px;
     top: 0;
-    background-color: #070313;
+    background: #070313;
 }
 
 nav ul {
     list-style-type: none;
-    padding-left: 0;
-    margin-left: none;
+    padding: 0;
+    margin: 0;
     line-height: 200%;
+    position: sticky;
+    top: 0;
+}
+
+nav ul li {
+    text-align: center;
+    padding: 5px;
+}
+
+nav ul li:hover {
+    display: block;
+    background: #100c1a;
+}
+
+nav ul li a {
+    text-decoration-style: none;
 }
 
 a:visited {
@@ -47,6 +60,7 @@ a:link {
 
 p {
     line-height: 170%;
+    margin-right: 50px;
 }
 
 .full-width {

@@ -1,0 +1,63 @@
+body {
+    background-color: #160F29;
+    color: #F3DFC1;
+    font-family: 'Sarabun', sans-serif;
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+}
+
+#logo {
+    float: left;
+    flex: 1;
+}
+
+#sitename {
+    flex: 1;
+}
+
+nav {
+    float: left;
+    flex: 1;
+    /* height: 100vh; */
+    margin-right: 3vw;
+    min-width: 150px;
+    position: sticky;
+    top: 0;
+}
+
+article {
+
+}
+
+a:visited {
+    color: #246A73;
+    text-decoration: none;
+}
+
+a:link {
+    color: #368F8B;
+}
+
+p {
+    /* line-height: 1000%; */
+    line-height: 170%;
+}
+
+.full-width {
+    background-color: #070313;
+    padding-left: 3%;
+    padding-right: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+footer {
+    color: #DDBEA8;
+}
+
+header {
+    font-family: 'Pixelify Sans', sans-serif;
+}

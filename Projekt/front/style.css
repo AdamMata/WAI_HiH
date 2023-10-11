@@ -11,25 +11,29 @@ body {
 
 #logo {
     float: left;
-    flex: 1;
 }
 
 #sitename {
-    flex: 1;
+    margin-left: 15px;
 }
 
 nav {
     float: left;
     flex: 1;
-    /* height: 100vh; */
     margin-right: 3vw;
-    min-width: 150px;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    min-width: 110px;
     position: sticky;
     top: 0;
+    background-color: #070313;
 }
 
-article {
-
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: none;
+    line-height: 200%;
 }
 
 a:visited {
@@ -42,7 +46,6 @@ a:link {
 }
 
 p {
-    /* line-height: 1000%; */
     line-height: 170%;
 }
 

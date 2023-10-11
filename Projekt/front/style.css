@@ -46,7 +46,7 @@ nav ul li:hover {
 }
 
 nav ul li a {
-    text-decoration-style: none;
+    text-decoration: none;
 }
 
 a:visited {
@@ -61,6 +61,10 @@ a:link {
 p {
     line-height: 170%;
     margin-right: 50px;
+}
+
+p::first-letter {
+    font-size: x-large;
 }
 
 .full-width {

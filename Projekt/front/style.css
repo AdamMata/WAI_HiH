@@ -1,7 +1,8 @@
 body {
-    background-color: #160F29;
+    background-color: #368F8B;
     color: #F3DFC1;
     font-family: 'Sarabun', sans-serif;
+    font-weight: 800;
     margin: 0;
 }
 
@@ -10,7 +11,7 @@ body {
 }
 
 #logo {
-    float: left;
+    
 }
 
 #sitename {
@@ -23,7 +24,7 @@ nav {
     margin: 3vw;
     min-width: 120px;
     top: 0;
-    background: #070313;
+    background: #246A73;
 }
 
 nav ul {
@@ -42,7 +43,7 @@ nav ul li {
 
 nav ul li:hover {
     display: block;
-    background: #100c1a;
+    background: #100B1E;
 }
 
 nav ul li a {
@@ -50,12 +51,12 @@ nav ul li a {
 }
 
 a:visited {
-    color: #246A73;
+    color: #46366b;
     text-decoration: none;
 }
 
 a:link {
-    color: #368F8B;
+    color: #28194b;
 }
 
 p {
@@ -68,7 +69,7 @@ p::first-letter {
 }
 
 .full-width {
-    background-color: #070313;
+    background-color: #246A73;
     padding-left: 3%;
     padding-right: 10%;
     padding-top: 1%;
@@ -76,9 +77,11 @@ p::first-letter {
 }
 
 footer {
-    color: #DDBEA8;
+    color: #9b7c67;
 }
 
 header {
+    color: #DDBEA8;
+    font-size: x-large;
     font-family: 'Pixelify Sans', sans-serif;
 }

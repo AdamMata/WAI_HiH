@@ -34,11 +34,16 @@ nav ul {
 nav ul li {
     text-align: center;
     padding: 10px 5px;
+    position: relative;
+    left: 0;
+    transition: left 0.3s;
+    border-radius: 5px;
 }
 
 nav ul li:hover {
     background: #100B1E;
     color: cyan;
+    left: 10px;
 }
 
 #sub-list {

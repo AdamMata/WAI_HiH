@@ -15,11 +15,9 @@ body {
 }
 
 nav {
-    float: left;
     flex: 1;
     margin: 3vw;
     min-width: 120px;
-    top: 0;
     background: #246A73;
     font-size: large;
 }
@@ -35,14 +33,10 @@ nav ul {
 
 nav ul li {
     text-align: center;
-    padding: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 5px;
 }
 
-/* fixme: `color:` works only on sub-list, see lines 57-59 */
 nav ul li:hover {
-    display: block;
     background: #100B1E;
     color: cyan;
 }
@@ -53,24 +47,25 @@ nav ul li:hover {
     text-align: left;
 }
 
-/* fixme: see line 43 */
-#sub-list li :hover {
-    color: cyan;
+nav ul li a:link {
+    color: #DDBEA8;
 }
 
-nav ul li a {
+nav ul li a:link, nav ul li a:visited {
     text-decoration: none;
 }
 
-/* fixme: links do not change color to visited */
-/* PS: unread links are hardly readable */
+nav ul li a:hover {
+    color: cyan;
+}
+
 a:visited {
     color: #261158;
     text-decoration: none;
 }
 
 a:link {
-    color: #4e3980;
+    /* color: #4e3980; */
 }
 
 p {

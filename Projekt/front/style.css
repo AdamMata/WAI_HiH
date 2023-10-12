@@ -21,6 +21,7 @@ nav {
     min-width: 120px;
     top: 0;
     background: #246A73;
+    font-size: large;
 }
 
 nav ul {
@@ -35,11 +36,24 @@ nav ul {
 nav ul li {
     text-align: center;
     padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 nav ul li:hover {
     display: block;
     background: #100B1E;
+    color: cyan;
+}
+
+#sub-list {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#sub-list li :hover {
+    color: cyan;
 }
 
 nav ul li a {

@@ -22,7 +22,7 @@ nav {
     font-size: large;
 }
 
-nav ul {
+nav menu {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -31,7 +31,7 @@ nav ul {
     top: 0;
 }
 
-nav ul li {
+nav menu li {
     text-align: center;
     padding: 10px 5px;
     position: relative;
@@ -40,7 +40,7 @@ nav ul li {
     border-radius: 5px;
 }
 
-nav ul li:hover {
+nav menu li:hover {
     background: #100B1E;
     color: cyan;
     left: 10px;
@@ -52,25 +52,24 @@ nav ul li:hover {
     text-align: left;
 }
 
-nav ul li a:link {
+nav menu li a:link {
     color: #DDBEA8;
 }
 
-nav ul li a:link, nav ul li a:visited {
+nav menu li a:link, nav menu li a:visited {
     text-decoration: none;
 }
 
-nav ul li a:hover {
+nav menu li a:hover {
     color: cyan;
 }
 
 a:visited {
-    color: #261158;
-    text-decoration: none;
+    color: #DDBEA8;
 }
 
 a:link {
-    /* color: #4e3980; */
+    color: #F3DFC1;
 }
 
 p {

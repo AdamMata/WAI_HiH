@@ -11,7 +11,7 @@ body {
 }
 
 #sitename {
-    margin-left: 15px;
+    margin-left: 5vw;
 }
 
 nav {
@@ -75,11 +75,44 @@ a:link {
 
 p {
     line-height: 170%;
-    margin-right: 50px;
+    margin-right: 10vw;
 }
 
 p::first-letter {
     font-size: x-large;
+}
+
+details {
+    margin-right: 10vw;
+}
+
+details > summary {
+    background-color: #246A73;
+    width: 100%;
+    padding-left: 5px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+#game-list {
+    width: 100%;
+    border: #100B1E;
+    border-width: 1px;    
+    margin-right: 10vw;
+    border-color: #F3DFC1;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+#game-list th {
+    background-color: #246A73;
+    border-radius: 3px;
+}
+
+#game-list td:not(th) {
+    margin: 5px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .full-width {

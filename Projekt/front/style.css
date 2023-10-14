@@ -19,6 +19,7 @@ nav {
     margin: 3vw;
     min-width: 120px;
     background: #246A73;
+    border-radius: 5px;
     font-size: large;
 }
 
@@ -98,9 +99,9 @@ details > summary {
     border: #100B1E;
     border-width: 1px;    
     margin-right: 10vw;
-    border-color: #F3DFC1;
-    border-style: solid;
+    border: 1;
     border-radius: 5px;
+    border-spacing: 0.2em;
 }
 
 #game-list th {
@@ -112,6 +113,11 @@ details > summary {
     margin: 5px;
     text-align: center;
     vertical-align: middle;
+}
+
+#game-list tr:not(:first-child) {
+    outline: solid thin;
+    border-radius: 3px;
 }
 
 details {
@@ -124,27 +130,6 @@ details > summary {
     padding-left: 5px;
     border-radius: 3px;
     margin-bottom: 10px;
-}
-
-#game-list {
-    width: 100%;
-    border: #100B1E;
-    border-width: 1px;    
-    margin-right: 10vw;
-    border-color: #F3DFC1;
-    border-style: solid;
-    border-radius: 5px;
-}
-
-#game-list th {
-    background-color: #246A73;
-    border-radius: 3px;
-}
-
-#game-list td:not(th) {
-    margin: 5px;
-    text-align: center;
-    vertical-align: middle;
 }
 
 .full-width {

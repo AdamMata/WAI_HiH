@@ -18,7 +18,10 @@
 </head>
 <body>
     <header class="full-width">
-        <h1 id="sitename">Forum</h1>
+        <div class="flex-container" style="justify-content: space-between;">
+            <h1 id="sitename">Forum</h1>
+            <button id="show-form-button" onclick="displayForm()">Dodaj własną grę</button>
+        </div>
     </header>
     <div class="flex-container" id="main-flex-container">
         <nav>
@@ -50,10 +53,43 @@
                 Odkryj razem z nami różnorodność gier komputerowych, które kształtują naszą pasję i emocje. Może Twoja ulubiona gra jest klasykiem z przeszłości, nowym hitem czy mało znanym dziełem, które zasługuje na więcej uwagi. Dzięki temu forum, możemy razem odkrywać, czym tak wyjątkowe są gry komputerowe i dlaczego kochamy je tak bardzo. Zostań częścią naszej społeczności i podziel się swoją miłością do gier!
             </p>
         </article>
+        <form id="form">
+            <h2>Dodaj własną grę!</h2>
+            <label for="nick">Nick:</label><br>
+            <input type="text" name="nick"><br>
+
+            <label for="email">E-mail:</label><br>
+            <input type="email" name="email"><br>
+            
+            <label for="name">Tytuł gry:</label><br>
+            <input type="text" name="title"><br>
+            
+            <h3>Kategoria:</h3>
+            <input type="checkbox" name="cat-shooter">
+            <label for="cat-shooter">strzelanka</label><br>
+            <input type="checkbox" name="cat-management">
+            <label for="cat-management">zarządzanie</label><br>
+            <br>
+
+            <label for="rating">Twoja ocena:</label>
+            <input type="number" min="1" max="10" name="rating"><br>
+            
+            <h3>Platforma:</h3>
+            <input type="radio" name="platform" id="platform-steam">
+            <label for="platform-steam">Steam</label><br>
+            <input type="radio" name="platform" id="platform-epic">
+            <label for="platform-epic">Epic Games</label><br>
+
+            <h3>Recenzja</h3>
+            <textarea name="review"></textarea><br>
+        
+            <input type="submit" value="Wyślij" id="submit-button"> <input type="button" value="Wyczyść" id="clear-button">
+        </form>
     </div>
     <footer class="full-width">
         Autor: Adam Matczak, s197637<br>
         Tekst na stronie częściowo wygenerowany ChatemGPT
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

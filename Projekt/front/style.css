@@ -2,7 +2,7 @@ body {
     background-color: #368F8B;
     color: #F3DFC1;
     font-family: 'Sarabun', sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     margin: 0;
 }
 
@@ -130,6 +130,22 @@ details > summary {
     padding-left: 5px;
     border-radius: 3px;
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+    form {
+        display: none;
+    }
+}
+
+form {
+    margin: 3vw;
+}
+
+form > h2 {
+    background-color: #246A73;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .full-width {

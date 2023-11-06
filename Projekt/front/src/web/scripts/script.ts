@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', load)
 
 function displayForm(): void {
-    let form: HTMLElement = document.getElementById("form");
+    let form = document.getElementById("form");
 
     if (form == null) return;
 
     if(form.style.display == "none") {
-        form.style.display = "block"
+        form.style.display = "block";
+        sessionStorage.setItem("displayForm", "block")
     }
     else {
-        form.style.display = "none"
+        form.style.display = "none";
+        sessionStorage.setItem("displayForm", "none")
     }
 }
 
 function load(): void {
-    console.log("loading");
     createButton();
-    console.log("loaded");
+    modifyForm();
 }
 
 function createButton(): void {
@@ -28,7 +29,9 @@ function createButton(): void {
     let container: Element = document.getElementsByClassName("flex-container")[0];
     
     container.appendChild(element);
-
-    console.log("button added");
 }
 
+function modifyForm(): void {
+    console.log("modifying form buttons...");
+    $("[type='text']");
+}

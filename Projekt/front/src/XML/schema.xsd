@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="games">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element name="game" type="game-type"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="game-type">
+        <xs:sequence>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element name="image" type="xs:anyURI"></xs:element>
+            </xs:choice>
+            <xs:element name="contributors" type="contributors-type">
+
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="contributors-type">
+        
+    </xs:complexType>
+</xs:schema>

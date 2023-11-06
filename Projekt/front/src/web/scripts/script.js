@@ -1,26 +1,31 @@
+"use strict";
 document.addEventListener('DOMContentLoaded', load);
 function displayForm() {
-    var form = document.getElementById("form");
+    let form = document.getElementById("form");
     if (form == null)
         return;
     if (form.style.display == "none") {
         form.style.display = "block";
+        sessionStorage.setItem("displayForm", "block");
     }
     else {
         form.style.display = "none";
+        sessionStorage.setItem("displayForm", "none");
     }
 }
 function load() {
-    console.log("loading");
     createButton();
-    console.log("loaded");
+    modifyForm();
 }
 function createButton() {
-    var element = document.createElement("button");
+    let element = document.createElement("button");
     element.id = "show-form-button";
     element.onclick = displayForm;
     element.innerHTML = "Dodaj własną grę";
-    var container = document.getElementsByClassName("flex-container")[0];
+    let container = document.getElementsByClassName("flex-container")[0];
     container.appendChild(element);
-    console.log("button added");
+}
+function modifyForm() {
+    console.log("modifying form buttons...");
+    $("[type='text']");
 }

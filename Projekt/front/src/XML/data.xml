@@ -1,6 +1,6 @@
 <games>
     <game title="Satisfactory">
-        <image type="logo">./Satisfactory-logo.jpg</image>
+        <image type="logo">images/Satisfactory-logo.jpg</image>
         <contributors>
             <author type="studio">
                 Coffee Stain Studios
@@ -29,7 +29,7 @@
         </genres>
     </game>
     <game title="Ultrakill">
-        <image type="logo">./Ultrakill-logo.jpg</image>
+        <image type="logo">images/Ultrakill-logo.jpg</image>
         <contributors>
             <author type="indie">
                 Arsi "Hakita" Patala
@@ -58,7 +58,7 @@
         </genres>
     </game>
     <game title="Prison Architect">
-        <image type="logo">./Prison_Architect-logo.jpg</image>
+        <image type="logo">images/Prison_Architect-logo.jpg</image>
         <contributors>
             <author type="studio">
                 Introversion Software

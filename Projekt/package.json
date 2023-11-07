@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/jqueryui": "^1.12.19",
     "jquery-ui": "^1.13.2",
+    "jquery-ui-css": "^1.11.5",
     "require.js": "^1.0.0"
   }
 }

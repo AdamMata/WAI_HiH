@@ -10,6 +10,12 @@ body {
     display: flex;
 }
 
+.flex-container form {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
 #sitename {
     margin-left: 5vw;
 }
@@ -140,6 +146,7 @@ details > summary {
 
 form {
     margin: 3vw;
+    display: block;
 }
 
 form > h2 {

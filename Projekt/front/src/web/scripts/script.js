@@ -1,31 +1,47 @@
-"use strict";
 document.addEventListener('DOMContentLoaded', load);
-function displayForm() {
-    let form = document.getElementById("form");
+function displayForm(display) {
+    var form = document.getElementById("form");
+    if (form == null)
+        return;
+    form.style.display = display;
+    sessionStorage.setItem("displayForm", display);
+}
+function displayFormOnClick() {
+    var form = document.getElementById("form");
     if (form == null)
         return;
     if (form.style.display == "none") {
-        form.style.display = "block";
-        sessionStorage.setItem("displayForm", "block");
+        displayForm("block");
     }
     else {
-        form.style.display = "none";
-        sessionStorage.setItem("displayForm", "none");
+        displayForm("none");
     }
+}
+function displayFormOnLoad() {
+    var display = sessionStorage.getItem("displayForm");
+    if (display == null)
+        return;
+    displayForm(display);
 }
 function load() {
     createButton();
+    displayFormOnLoad();
     modifyForm();
 }
 function createButton() {
-    let element = document.createElement("button");
+    var element = document.createElement("button");
     element.id = "show-form-button";
-    element.onclick = displayForm;
+    element.onclick = displayFormOnClick;
     element.innerHTML = "Dodaj własną grę";
-    let container = document.getElementsByClassName("flex-container")[0];
+    var container = document.getElementsByClassName("flex-container")[0];
     container.appendChild(element);
 }
 function modifyForm() {
-    console.log("modifying form buttons...");
-    $("[type='text']");
+    console.log("modifying form...");
+    $("#show-form-button").button();
+    $("form").resizable({
+        handles: "n, e, s, w"
+    });
 }
+//todo use jquery ui plugin
+//todo find new jquery plugin

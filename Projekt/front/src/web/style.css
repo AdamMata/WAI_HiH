@@ -79,9 +79,12 @@ a:link {
     color: #F3DFC1;
 }
 
+article {
+    margin-right: 10vw;
+}
+
 p {
     line-height: 170%;
-    margin-right: 10vw;
 }
 
 p::first-letter {

@@ -24,9 +24,18 @@ function displayFormOnLoad() {
     displayForm(display);
 }
 function load() {
-    createButton();
-    displayFormOnLoad();
-    modifyForm();
+    if ($("header h1")[0].innerHTML == "Forum") {
+        console.log("applying forum changes...");
+        createButton();
+        displayFormOnLoad();
+        modifyForm();
+    }
+    if ($("#page")[0].innerHTML == "Kolekcja") {
+        console.log("applying collection changes...");
+        $("article").tabs();
+        // @ts-ignore
+        $('a').smoothScroll();
+    }
 }
 function createButton() {
     var element = document.createElement("button");
@@ -39,9 +48,6 @@ function createButton() {
 function modifyForm() {
     console.log("modifying form...");
     $("#show-form-button").button();
-    $("form").resizable({
-        handles: "n, e, s, w"
-    });
 }
-//todo use jquery ui plugin
+//todo use jquery ui plugin 
 //todo find new jquery plugin

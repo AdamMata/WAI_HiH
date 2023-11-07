@@ -15,10 +15,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Sarabun:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet"> 
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://cdn.statically.io/gh/kswedberg/jquery-smooth-scroll/3948290d/jquery.smooth-scroll.min.js"></script>
 </head>
 <body>
     <header class="full-width">
-        <h1 id="sitename">Kolekcja</h1>
+        <h1 id="page">Kolekcja</h1>
     </header>
     <div class="flex-container" id="main-flex-container">
         <nav>
@@ -29,10 +36,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="collection.html">Moja kolekcja</a>
+                    <a href="#top">Moja kolekcja</a>
                     <menu id="sub-list">
                         <li><a href="collection.html#Strzelanki">strzelanki</a></li>
-                        <li><a href="collection.html#Zarządzanie">zarządzanie</a></li>
+                        <li><a href="collection.html#Zarzadzanie">zarządzanie</a></li>
                     </menu>
                 </li>
                 <li><a href="forum.html">Wasze ulubione</a></li>
@@ -48,6 +55,12 @@
             </p>
             <p>
                 Odkryj razem z nami naszą eklektyczną kolekcję, która podkreśla różnorodność i bogactwo gier komputerowych. Wśród tych tytułów znajdziesz dzieła sztuki, które zachwyciły miliony graczy na całym świecie i są dowodem na to, że gry to nie tylko rozrywka, ale także forma sztuki. Gotowy na przygodę? Zanurz się w naszym katalogu i odkryj gry, które zapadły mi w pamięć na zawsze.
+            </p>
+            <p>
+                Ta lista zawiera zarówno klasyki, które zainicjowały moją przygodę z grami, jak i nowoczesne hity, które kontynuują rozwijanie branży. Każda z tych gier ma swoje niepowtarzalne cechy i wyjątkowy urok, który przyciągał mnie na długie godziny rozgrywki. Mam nadzieję, że znajdziesz wśród nich coś, co Cię zainteresuje i zainspiruje do własnych przygód w wirtualnym świecie.
+            </p>
+            <p>
+                Niezależnie od tego, czy jesteś fanem epickich przygód, wymagających łamigłówek, czy emocjonujących pojedynków w trybie wieloosobowym, moja lista zawiera tytuły, które pokazują różnorodność gier komputerowych i ich zdolność do tworzenia wyjątkowych doświadczeń. Przygotuj się na pełną emocji podróż przez świat gier, która rozpocznie się od moich osobistych ulubionych tytułów. 
             </p>
             <details>
                 <summary>
@@ -81,19 +94,46 @@
                     </tr>
                 </table>
             </details>
-            <h2 id="Strzelanki">Strzelanki</h2>
+
+            <div id="tabs">
+                <ul>
+                    <li><a href="#Strzelanki">Strzelanki</a></li>
+                    <li><a href="#Zarzadzanie">Zarzadzanie</a></li>
+                </ul>
+                <div id="Strzelanki">
+                    <h2 id="Strzelanki">Strzelanki</h2>
+                    <p>
+                        Witaj w fascynującym świecie strzelanek, gdzie akcja, adrenalina i precyzja łączą się w jednym emocjonującym doświadczeniu. Zapraszam do odkrycia moich ulubionych tytułów w tej kategorii gier, które zapewniają niesamowitą rozrywkę, od ekscytujących bitew wieloosobowych po głębokie kampanie fabularne. Przygotuj się na niezapomniane starcia i dowiedz się, dlaczego strzelanki stanowią trzon mojej pasji do gier komputerowych.
+                    </p>
+                    <p>
+                        Gry strzelankowe oferują coś wyjątkowego dla każdego gracza. Są miejscem, w którym można sprawdzić swoje umiejętności, taktykę i refleks, biorąc udział w ekscytujących bitwach z przeciwnikami lub przeciwnikami kontrolowanymi przez sztuczną inteligencję. To także gatunek, który rozwija się w niesamowitym tempie, wprowadzając nowe pomysły i technologie, które sprawiają, że rozgrywka staje się coraz bardziej fascynująca.
+                    </p>
+                </div>
+                <div id="Zarzadzanie">
+                    <h2>Zarządzanie</h2>
+                    <p>
+                        Zapraszam do fascynującego świata gier o zarządzaniu, gdzie to Ty stajesz się głównym architektem, dowódcą i strategiem. Na mojej stronie znajdziesz moje ulubione tytuły, które umożliwiają planowanie, budowę, i zarządzanie różnymi aspektami wirtualnych światów. Od ekscytujących symulacji gospodarczych po skomplikowane strategie, te gry oferują nie tylko intelektualne wyzwania, ale także satysfakcję z budowania i rozwijania własnych królestw. Przygotuj się na wciągające doświadczenia, które pozwalają kształtować i kontrolować światy, i dowiedz się, dlaczego gry o zarządzaniu to moja pasja.
+                    </p>
+                    <p>
+                        Gry o zarządzaniu oferują graczom unikalną okazję do wyrażenia swojej kreatywności, zdolności organizacyjnych i umiejętności strategicznego myślenia. To gatunek, który pozwala kreować, rozwijać, i kontrolować wirtualne światy, co często jest nie tylko wyzwaniem, ale także źródłem satysfakcji i radości.
+                    </p>
+                </div>
+            </div>
+
+            <!-- <h2 id="Strzelanki">Strzelanki</h2>
             <p>
                 Witaj w fascynującym świecie strzelanek, gdzie akcja, adrenalina i precyzja łączą się w jednym emocjonującym doświadczeniu. Zapraszam do odkrycia moich ulubionych tytułów w tej kategorii gier, które zapewniają niesamowitą rozrywkę, od ekscytujących bitew wieloosobowych po głębokie kampanie fabularne. Przygotuj się na niezapomniane starcia i dowiedz się, dlaczego strzelanki stanowią trzon mojej pasji do gier komputerowych.
             </p>
-            <h2 id="Zarządzanie">Zarządzanie</h2>
+            <h2 id="Zarzadzanie">Zarządzanie</h2>
             <p>
                 Zapraszam do fascynującego świata gier o zarządzaniu, gdzie to Ty stajesz się głównym architektem, dowódcą i strategiem. Na mojej stronie znajdziesz moje ulubione tytuły, które umożliwiają planowanie, budowę, i zarządzanie różnymi aspektami wirtualnych światów. Od ekscytujących symulacji gospodarczych po skomplikowane strategie, te gry oferują nie tylko intelektualne wyzwania, ale także satysfakcję z budowania i rozwijania własnych królestw. Przygotuj się na wciągające doświadczenia, które pozwalają kształtować i kontrolować światy, i dowiedz się, dlaczego gry o zarządzaniu to moja pasja.
-            </p>
+            </p> -->
         </article>
     </div>
     <footer class="full-width">
         Autor: Adam Matczak, s197637<br>
         Tekst na stronie częściowo wygenerowany ChatemGPT
     </footer>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

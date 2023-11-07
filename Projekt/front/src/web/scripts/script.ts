@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', load)
 
 function displayForm(display: string): void {
-    let form = document.getElementById("form");
+    let form: HTMLElement | null = document.getElementById("form");
     if (form == null) return;
 
     form.style.display = display;
@@ -9,7 +9,7 @@ function displayForm(display: string): void {
 }
 
 function displayFormOnClick(): void {
-    let form = document.getElementById("form");
+    let form: HTMLElement | null = document.getElementById("form");
     if (form == null) return;
 
     if(form.style.display == "none") {
@@ -21,17 +21,29 @@ function displayFormOnClick(): void {
 }
 
 function displayFormOnLoad(){
-    let display = sessionStorage.getItem("displayForm");
+    let display: string | null = sessionStorage.getItem("displayForm");
     if (display == null) return;
 
     displayForm(display);
 }
 
 function load(): void {
-    createButton();
+    if($("header h1")[0].innerHTML == "Forum"){
+        console.log("applying forum changes...");
+     
+        createButton();
 
-    displayFormOnLoad();
-    modifyForm();
+        displayFormOnLoad();
+        modifyForm();
+    }
+    if($("#page")[0].innerHTML == "Kolekcja"){
+        console.log("applying collection changes...");
+     
+        $("article").tabs(); //todo
+
+        // @ts-ignore
+        $('a').smoothScroll();
+    }
 }
 
 function createButton(): void {
@@ -48,11 +60,8 @@ function createButton(): void {
 function modifyForm(): void {
     console.log("modifying form...");
     $("#show-form-button").button();
-    $("form").resizable({
-        handles: "n, e, s, w"
-    });
 }
-//todo use jquery ui plugin
+//todo use jquery ui plugin 
 
 
 //todo find new jquery plugin

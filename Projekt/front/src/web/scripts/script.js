@@ -44,6 +44,5 @@ function createButton() {
     container.appendChild(element);
 }
 function modifyForm() {
-    console.log("modifying form...");
     $("#show-form-button").button();
 }

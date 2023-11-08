@@ -54,6 +54,5 @@ function createButton(): void {
 }
 
 function modifyForm(): void {
-    console.log("modifying form...");
     $("#show-form-button").button();
 }

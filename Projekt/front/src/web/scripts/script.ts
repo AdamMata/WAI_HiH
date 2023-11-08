@@ -29,17 +29,13 @@ function displayFormOnLoad(){
 
 function load(): void {
     if($("header h1")[0].innerHTML == "Forum"){
-        console.log("applying forum changes...");
-     
         createButton();
 
         displayFormOnLoad();
         modifyForm();
     }
-    if($("#page")[0].innerHTML == "Kolekcja"){
-        console.log("applying collection changes...");
-     
-        $("article").tabs(); //todo
+    if($("#page")[0].innerHTML == "Kolekcja"){     
+        $("#tabs").tabs(); //fixme: open tab on nav click
 
         // @ts-ignore
         $('a').smoothScroll();
@@ -61,7 +57,3 @@ function modifyForm(): void {
     console.log("modifying form...");
     $("#show-form-button").button();
 }
-//todo use jquery ui plugin 
-
-
-//todo find new jquery plugin

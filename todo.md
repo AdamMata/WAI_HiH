@@ -12,14 +12,14 @@
 > 0 błędów
 
 ## rozliczenie
-1. [ ] archiwum z plikami .zip
-    - [ ] zawartość katalogu współdzielonego
-    - [ ] nazwa: matczak_adam_197637.zip
-2. [ ] formularz rozliczeniowy
+1. [X] archiwum z plikami .zip
+    - [X] zawartość katalogu współdzielonego
+    - [X] nazwa: matczak_adam_197637.zip
+2. [X] formularz rozliczeniowy
     - [X] wydrukować tabelę
-    - [ ] uzupełnić
+    - [X] uzupełnić
     > przynieść na `4.` prezentację
-3. [ ] przesłać
+3. [X] przesłać
     > `Enauczanie > Projekt > Etap 1 > strona klienta > Przesłane pliki`
 4. [ ] prezentować
 
@@ -60,8 +60,28 @@
 - [ ] formularz
 
 ## [ ] XML/Schema/DTD
-### XML
-- [ ]
-### Schema
+### [X] XML
+
+### [ ] Schema
+- [ ] typy
+    - [ ] 6 globalnych typów złożonych  
+    - [ ] 6 globalnych prostych
+    - [ ] 4 lokalne złożone
+    - [ ] 4 lokalne proste
+- [ ] modele wyboru 
+- [ ] mieszane typy
+- [ ] grupa elementów/atrybutów
+- [ ] 4 poziomy zagłębienia
+- [ ] 12 elementów
+    - [ ] min. 5 z podelementami
+- [ ] aspekty
+    - [ ] min. 4 różne
+    - [ ] pattern i enum
+- [ ] wyprowadzanie typów
+- [ ] min 3 *ref*y
+- [ ] lista [patrz pdf](HiH_wymogi.pdf)
+- [ ] union
+- [ ] 4 typy wbudowane
+- [X] 3 podelementy [patrz XML](#x-xml)
 
 ### DTD

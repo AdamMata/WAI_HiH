@@ -1,124 +1,149 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="games">
-        <xs:complexType>
-            <xs:sequence maxOccurs="unbounded">
-                <xs:element name="game" type="game-type"></xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+	<xs:element name="games">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="game" type="game-type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
-    <xs:complexType name="game-type">
-        <xs:sequence>
-            <xs:element name="image" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:anyURI">
-                            <xs:attribute name="type" type="xs:token"/>
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="contributors" type="contributors-type"></xs:element>
-            <xs:element name="requirements" type="requirements-type"></xs:element>
-        </xs:sequence>
-        <xs:attribute name="title" type="xs:string"></xs:attribute>
-    </xs:complexType>
+	<xs:complexType name="game-type">
+		<xs:sequence>
+			<xs:element name="image" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:anyURI">
+							<xs:attribute name="type" type="xs:token"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="contributors" type="contributors-type"/>
+			<xs:element name="requirements" type="requirements-type"/>
+			<xs:element name="genres" type="genres-type"/>
+		</xs:sequence>
+		<xs:attribute name="title" type="xs:string"></xs:attribute>
+	</xs:complexType>
 
-    <xs:complexType name="contributors-type">
-        <xs:sequence>
-            <xs:element name="author" maxOccurs="unbounded" type="author-type"/>
-            <xs:element name="publisher" type="xs:string"/>
-            <xs:element name="release" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:attribute name="stage" type="release-stage-attribute"></xs:attribute>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>      
-    </xs:complexType>
+	<xs:complexType name="contributors-type">
+		<xs:sequence>
+			<xs:element name="author" maxOccurs="unbounded" type="author-type"/>
+			<xs:element name="publisher" type="author-type"/>
+			<xs:element name="release" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:date">
+							<xs:attribute name="stage" type="release-stage-attribute"></xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>      
+	</xs:complexType>
 
-    <xs:complexType name="author-type" mixed="true">
-        <xs:sequence>
-            <xs:element name="link" type="link-type"/>
-        </xs:sequence>    
-        <xs:attribute name="type" type="author-type-attribute"></xs:attribute>        
-    </xs:complexType>
+	<xs:complexType name="author-type" mixed="true">
+		<xs:sequence>
+			<xs:element name="link" type="link-type" minOccurs="0"/>
+		</xs:sequence>    
+		<xs:attribute name="type" type="author-type-attribute"></xs:attribute>        
+	</xs:complexType>
 
-    <xs:complexType name="link-type">
-        <xs:simpleContent>
-            <xs:extension base="xs:anyURI"></xs:extension>
-        </xs:simpleContent>
-        <xs:attribute name="type">
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="website"/>
-                    <xs:enumeration value="community"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:attribute>
-    </xs:complexType>
+	<xs:complexType name="link-type">
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI">
+				<xs:attribute name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="website"/>
+							<xs:enumeration value="community"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 
-    <!-- <xs:simpleType name="link"></xs:simpleType> -->
+	<xs:simpleType name="author-type-attribute">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="studio"/>
+			<xs:enumeration value="indie"/>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:simpleType name="author-type-attribute">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="studio"/>
-            <xs:enumeration value="indie"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="release-stage-attribute">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="early access"></xs:enumeration>
+			<xs:enumeration value="full"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:simpleType name="release-stage-attribute">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="early access"></xs:enumeration>
-            <xs:enumeration value="full"></xs:enumeration>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:complexType name="requirements-type">
+		<xs:sequence>
+			<xs:element name="platforms">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="platform" type="platform-type" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="engine" minOccurs="0">
 
-    <xs:complexType name="requirements-type">
-        <xs:sequence>
-            <xs:element name="platforms">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="platform" type="platform-type" maxOccurs="unbounded">
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="engine">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
+	<xs:complexType name="platform-type">
+		<xs:simpleContent>
+			<xs:extension base="platform-version">
+				<xs:attribute name="system" type="xs:string">
+					<!-- <xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Windows"></xs:enumeration>
+							<xs:enumeration value="Xbox"></xs:enumeration>
+							<xs:enumeration value="PlayStation"></xs:enumeration>
+							<xs:enumeration value="Linux"></xs:enumeration>
+							<xs:enumeration value="MacOS"></xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType> -->
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 
-    <xs:complexType name="platform-type">
-        <xs:simpleContent>
-            <xs:extension base="platform-version">
-                <xs:attribute name="system">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="Windows"></xs:enumeration>
-                            <xs:enumeration value="Xbox"></xs:enumeration>
-                            <xs:enumeration value="PlayStation"></xs:enumeration>
-                            <xs:enumeration value="Linux"></xs:enumeration>
-                            <xs:enumeration value="MacOS"></xs:enumeration>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
+	<xs:simpleType name="platform-version">
+		<xs:union memberTypes="
+			xs:nonNegativeInteger
+			xs:token
+			empty
+		"/>
+	</xs:simpleType>
+	<xs:simpleType name="empty">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="0"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:simpleType name="platform-version">
-        <xs:union memberTypes="
-            xs:nonNegativeInteger
-            xs:token
-            empty
-        "/>
-    </xs:simpleType>
-    <xs:simpleType name="empty">
-        <xs:restriction base="xs:string">
-            <xs:maxLength value="0"></xs:maxLength>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:complexType name="genres-type">
+		<xs:sequence>
+			<xs:element name="genre" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="category">
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:enumeration value="shooter"></xs:enumeration>
+										<xs:enumeration value="simulation"></xs:enumeration>
+										<xs:enumeration value="management"></xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 
 </xs:schema>

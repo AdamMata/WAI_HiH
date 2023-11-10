@@ -20,7 +20,7 @@
                 <platform system="Windows">10</platform>
                 <platform system="Windows">11</platform>
             </platforms>
-            <engine system="Unreal Engine">5</engine>
+            <engine system="Unreal Engine"/>
         </requirements>
         <genres>
             <genre category="simulation">factory-building</genre>

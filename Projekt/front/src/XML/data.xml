@@ -1,3 +1,4 @@
+<!-- <!DOCTYPE games SYSTEM "declaration.dtd"> -->
 <games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
     <game title="Satisfactory">
         <image type="logo">images/Satisfactory-logo.jpg</image>
@@ -23,7 +24,7 @@
             <engine system="Unreal Engine"/>
         </requirements>
         <genres>
-            <genre category="simulation">factory-building</genre>
+            <genre category="simulation">factory building</genre>
             <genre category="simulation">sandbox</genre>
             <genre>third-person</genre>
         </genres>
@@ -52,8 +53,8 @@
             <engine system="Unity"/>
         </requirements>
         <genres>
-            <genre category="shooter">movement-shooter</genre>
-            <genre category="shooter">boomer-shooter</genre>
+            <genre category="shooter">movement shooter</genre>
+            <genre category="shooter">boomer shooter</genre>
             <genre>first-person</genre>
         </genres>
     </game>
@@ -86,7 +87,7 @@
             </platforms>
         </requirements>
         <genres>
-            <genre category="simulation">business-management</genre>
+            <genre category="simulation">business management</genre>
             <genre category="simulation">sandbox</genre>
         </genres>
     </game>

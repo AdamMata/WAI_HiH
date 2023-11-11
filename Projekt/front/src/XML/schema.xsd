@@ -34,7 +34,14 @@
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:date">
-							<xs:attribute name="stage" type="release-stage-attribute"/>
+							<xs:attribute name="stage">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="early access"/>
+										<xs:enumeration value="full"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
@@ -46,7 +53,14 @@
 		<xs:sequence>
 			<xs:element name="link" type="link-type" minOccurs="0"/>
 		</xs:sequence>    
-		<xs:attribute name="type" type="author-type-attribute"/>        
+		<xs:attribute name="type">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="studio"/>
+					<xs:enumeration value="indie"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>        
 	</xs:complexType>
 
 	<xs:complexType name="link-type">
@@ -63,20 +77,6 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-
-	<xs:simpleType name="author-type-attribute">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="studio"/>
-			<xs:enumeration value="indie"/>
-		</xs:restriction>
-	</xs:simpleType>
-
-	<xs:simpleType name="release-stage-attribute">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="early access"/>
-			<xs:enumeration value="full"/>
-		</xs:restriction>
-	</xs:simpleType>
 
 	<xs:complexType name="requirements-type">
 		<xs:group ref="requirements-group"/>
@@ -107,16 +107,14 @@
 		</xs:simpleContent>
 	</xs:complexType>
 
-	<xs:attribute name="system" type="xs:string">
-					<!-- <xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="Windows"></xs:enumeration>
-							<xs:enumeration value="Xbox"></xs:enumeration>
-							<xs:enumeration value="PlayStation"></xs:enumeration>
-							<xs:enumeration value="Linux"></xs:enumeration>
-							<xs:enumeration value="MacOS"></xs:enumeration>
-						</xs:restriction>
-					</xs:simpleType> -->
+	<xs:attribute name="system">
+		<xs:simpleType>
+			<xs:list>
+				<xs:simpleType>
+					<xs:restriction base="xs:token"/>
+				</xs:simpleType>
+			</xs:list>
+		</xs:simpleType>
 	</xs:attribute>
 
 	<xs:simpleType name="platform-version">

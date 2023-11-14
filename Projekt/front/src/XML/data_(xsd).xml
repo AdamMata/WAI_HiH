@@ -1,4 +1,3 @@
-<!-- <!DOCTYPE games SYSTEM "declaration.dtd"> -->
 <games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
     <game title="Satisfactory">
         <image type="logo">images/Satisfactory-logo.jpg</image>

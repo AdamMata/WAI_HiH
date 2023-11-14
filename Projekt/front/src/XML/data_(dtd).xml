@@ -1,0 +1,95 @@
+<!DOCTYPE games SYSTEM "declaration.dtd">
+<!-- <games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd"> -->
+<games>
+    <game title="Satisfactory">
+        <image type="logo">images/Satisfactory-logo.jpg</image>
+        <contributors>
+            <author type="studio">
+                Coffee Stain Studios
+                <link type="website">https://www.coffeestainstudios.com/</link>
+            </author>
+            <publisher>
+                Coffee Stain Publishing
+            </publisher>
+            <release stage="early-access">
+                2019-03-19
+            </release>
+        </contributors>
+        <requirements>
+            <platforms>
+                <platform system="Windows">7</platform>
+                <platform system="Windows">8</platform>
+                <platform system="Windows">10</platform>
+                <platform system="Windows">11</platform>
+            </platforms>
+            <engine system="Unreal Engine"/>
+        </requirements>
+        <genres>
+            <genre category="simulation">factory building</genre>
+            <genre category="simulation">sandbox</genre>
+            <genre>third-person</genre>
+        </genres>
+    </game>
+    <game title="Ultrakill">
+        <image type="logo">images/Ultrakill-logo.jpg</image>
+        <contributors>
+            <author type="indie">
+                Arsi "Hakita" Patala
+            </author>
+            <publisher>
+                New Blood Interactive
+                <link type="website">https://newblood.games/</link>
+            </publisher>
+            <release stage="early-access">
+                2020-09-03
+            </release>
+        </contributors>
+        <requirements>
+            <platforms>
+                <platform system="Windows">7</platform>
+                <platform system="Windows">8</platform>
+                <platform system="Windows">10</platform>
+                <platform system="Windows">11</platform>
+            </platforms>
+            <engine system="Unity"/>
+        </requirements>
+        <genres>
+            <genre category="shooter">movement shooter</genre>
+            <genre category="shooter">boomer shooter</genre>
+            <genre>first-person</genre>
+        </genres>
+    </game>
+    <game title="Prison Architect">
+        <image type="logo">images/Prison_Architect-logo.jpg</image>
+        <contributors>
+            <author type="studio">
+                Introversion Software
+                <link type="website">https://www.introversion.co.uk/introversion/</link>
+            </author>
+            <publisher>
+                Paradox Interactive
+            </publisher>
+            <release stage="full">
+                2015-10-06
+            </release>
+        </contributors>
+        <requirements>
+            <platforms>
+                <platform system="Windows">7</platform>
+                <platform system="Windows">8</platform>
+                <platform system="Windows">10</platform>
+                <platform system="Windows">11</platform>
+
+                <platform system="MacOS"></platform>
+                <platform system="Linux"></platform>
+                <platform system="PlayStation">4</platform>
+                <platform system="Xbox">360</platform>
+                <platform system="Xbox">One</platform>
+            </platforms>
+        </requirements>
+        <genres>
+            <genre category="simulation">business management</genre>
+            <genre category="simulation">sandbox</genre>
+        </genres>
+    </game>
+</games>

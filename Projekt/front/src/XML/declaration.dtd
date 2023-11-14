@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT games (game+)>
+<!ELEMENT game (image+, contributors, requirements, genres)>
+	<!ATTLIST game title CDATA #REQUIRED>
+
+<!ELEMENT image (#PCDATA)>
+	<!ATTLIST image type CDATA #REQUIRED>
+
+<!ELEMENT contributors (author*, publisher, release*)>
+	
+	<!ENTITY % credit "
+		(#PCDATA|link)*
+	">
+	<!ELEMENT author %credit;>
+		<!ATTLIST author type (indie|studio) #REQUIRED>
+	<!ELEMENT publisher %credit;>
+	<!ELEMENT release (#PCDATA)>
+		<!ATTLIST release stage (full|early-access) #REQUIRED>
+
+<!ELEMENT requirements (platforms, engine?)>
+	<!ELEMENT platforms (platform*)>
+
+		<!ENTITY % system "
+			system CDATA #REQUIRED
+		">
+		<!ELEMENT platform (#PCDATA)>
+			<!ATTLIST platform %system;>
+		<!ELEMENT engine (#PCDATA)>
+			<!ATTLIST engine %system;>
+
+<!ELEMENT genres (genre)*>
+	<!ELEMENT genre (#PCDATA)>
+		<!ATTLIST genre category (simulation|shooter) #IMPLIED>
+
+<!ELEMENT link (#PCDATA)>
+	<!ATTLIST link type CDATA "website">

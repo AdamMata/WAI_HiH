@@ -49,8 +49,12 @@ nav menu li {
 
 nav menu li:hover {
     background: #100B1E;
-    color: cyan;
     left: 10px;
+}
+
+@keyframes choose-menu {
+    from {color:#DDBEA8;}
+    to {color: cyan;}
 }
 
 #sub-list {
@@ -68,8 +72,10 @@ nav menu li a:link, nav menu li a:visited {
 }
 
 nav menu li a:hover {
-    color: cyan;
-}
+    animation: choose-menu 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate; 
+} 
 
 a:visited {
     color: #DDBEA8;
@@ -108,7 +114,7 @@ details > summary {
     border: #100B1E;
     border-width: 1px;    
     margin-right: 10vw;
-    border: 1;
+    border: 1px;
     border-radius: 5px;
     border-spacing: 0.2em;
 }
@@ -139,6 +145,15 @@ details > summary {
     padding-left: 5px;
     border-radius: 3px;
     margin-bottom: 10px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#gallery img {
+    width: 250px;
 }
 
 @media only screen and (max-width: 700px) {

@@ -1,87 +1,35 @@
-# [ ] WAI
+# WAI 2: tokyo drift
+> php BEZ FRAMEWORKÓW
 
-- [X] formularz
-- [X] 1 WebAPI
-- [X] jQuery
-* * [X] 1 Gotowy przykład (użyj pluginu) -> smoothscroll
-* * [X] dwa inne widgety jQuery UI -> tabs, button
-- [X] Elementy używające JS niedostępne bez JSa
+> galeria z historią
 
-> Umiejętne używanie debuggera
+> rejestracja, logowanie, wylogowanie
 
-> 0 błędów
+> znajomość architektury
 
-## rozliczenie
-1. [X] archiwum z plikami .zip
-    - [X] zawartość katalogu współdzielonego
-    - [X] nazwa: matczak_adam_197637.zip
-2. [X] formularz rozliczeniowy
-    - [X] wydrukować tabelę
-    - [X] uzupełnić
-    > przynieść na `4.` prezentację
-3. [X] przesłać
-    > `Enauczanie > Projekt > Etap 1 > strona klienta > Przesłane pliki`
-4. [ ] prezentować
+> wzorzec MVC: `front controller, routing, kontrolery, moddel, widoki, logika biznesowa`
 
+> *Dla chętnych*: obiektowa implementacja MVC
 
+## KATEGORIA I: łatwe
 
-# [ ] HIH
+1. [ ] przesyłanie plików na serwer
+    - tylko pliki `.png`, `.jpg`
+    - nie większe niż 1 MB
+    - `DocumentRoot/images`
 
-## [ ] strona
-- [ ] zgodność treści z tematem
-- [ ] HTML5
-- [ ] responsywność
-    - [ ] min. 2 wielkości ekranu
-    - [ ] viewport
-    - [ ] @media
-    - [ ] zmiana położenia menu
-    - [ ] viewport-width
-- [ ] walidacja
-    - [ ] HTML
-    - [ ] CSS
-- [ ] układ
-    - [ ] podział na elementy
-    - [ ] znaczniki semantyczne
-- [ ] min. 3 pliki HTML
-- [ ] menu
-    - [ ] min. 3 opcje
-    - [ ] sub-opcje
-- [ ] grafika
-    - [ ] galeria zdjęć
-        - [ ] min. 5
-        - [ ] da się powiększyć
-    - [ ] svg
-    - [ ] keyframe
-    - [ ] transition
-- [ ] tabela
-- [ ] linki
-- [ ] linki do tekstu
-- [X] CSS
-- [ ] formularz
+2. [ ] znak wodny i thumbnail
+    - w formularzu *obowiązkowy* field `znak wodny`
+    - otrzymany plik > nałożyć watermark > stworzyć miniaturę 200x125px
+    - lib PHP GD (jest już w VMie)
+    - 3 pliki per upload: origin, watermark, thumbnail
 
-## [ ] XML/Schema/DTD
-### [X] XML
+3. [ ] galeria zdjęć
+    - prezentacja miniatur
+    - paging po dowolną ilość zdjęć
+    - na kliknięcie > pełny rozmiar
+    > JEŻELI miniatury się nie udały, pagują się pomniejszone w CSSie oryginały
+    - użyj dwóch: `include, include_once, require, require_once`
 
-### [ ] Schema
-- [ ] typy
-    - [ ] 6 globalnych typów złożonych  
-    - [ ] 6 globalnych prostych
-    - [ ] 4 lokalne złożone
-    - [ ] 4 lokalne proste
-- [ ] modele wyboru 
-- [ ] mieszane typy
-- [ ] grupa elementów/atrybutów
-- [ ] 4 poziomy zagłębienia
-- [ ] 12 elementów
-    - [ ] min. 5 z podelementami
-- [ ] aspekty
-    - [ ] min. 4 różne
-    - [ ] pattern i enum
-- [ ] wyprowadzanie typów
-- [ ] min 3 *ref*y
-- [ ] lista [patrz pdf](HiH_wymogi.pdf)
-- [ ] union
-- [ ] 4 typy wbudowane
-- [X] 3 podelementy [patrz XML](#x-xml)
-
-### DTD
+## KATEGORIA II: średnie
+...

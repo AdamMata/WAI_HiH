@@ -2,19 +2,7 @@
 <html lang="pl">
 <head>
     <title>Gry!</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-
-    <meta name="author" content="Adam Matczak">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Sarabun:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet"> 
+    <?php require_once('templates/template-head.php') ?>    
 </head>
 <body>
     <header class="full-width">
@@ -24,18 +12,18 @@
         <nav>
             <menu>
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="images/gamepad.svg" alt="Strona główna" width="100" height="100" id="logo">
                     </a>
                 </li>
                 <li>
-                    <a href="collection.html">Moja kolekcja</a>
+                    <a href="collection.php">Moja kolekcja</a>
                     <menu id="sub-list">
-                        <li><a href="collection.html#Strzelanki">strzelanki</a></li>
-                        <li><a href="collection.html#Zarządzanie">zarządzanie</a></li>
+                        <li><a href="collection.php#Strzelanki">strzelanki</a></li>
+                        <li><a href="collection.php#Zarządzanie">zarządzanie</a></li>
                     </menu>
                 </li>
-                <li><a href="forum.html">Wasze ulubione</a></li>
+                <li><a href="forum.php">Wasze ulubione</a></li>
             </menu>
         </nav>
 

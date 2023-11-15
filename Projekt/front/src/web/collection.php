@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <title>Gry!</title>
-    <?php require_once('templates/template-head.php') ?>  
-</head>
+<?php require_once('templates/template-head.html') ?>
 <body>
     <header class="full-width">
         <h1 id="page">Kolekcja</h1>
     </header>
     <div class="flex-container" id="main-flex-container">
-        <nav>
-            <menu>
-                <li>
-                    <a href="index.php">
-                        <img src="images/gamepad.svg" alt="Strona główna" width="100" height="100" id="logo">
-                    </a>
-                </li>
-                <li>
-                    <a href="#top">Moja kolekcja</a>
-                    <menu id="sub-list">
-                        <li><a href="collection.php#Strzelanki">strzelanki</a></li>
-                        <li><a href="collection.php#Zarzadzanie">zarządzanie</a></li>
-                    </menu>
-                </li>
-                <li><a href="forum.php">Wasze ulubione</a></li>
-            </menu>
-        </nav>
+        <?php require_once('templates/template-nav.html') ?>
 
         <article>
             <p> 
@@ -125,10 +104,6 @@
             </div>
         </article>
     </div>
-    <footer class="full-width">
-        Autor: Adam Matczak, s197637<br>
-        Tekst na stronie częściowo wygenerowany ChatemGPT
-    </footer>
-    <script src="scripts/script.js" defer></script>
+    <?php require_once("templates/template-footer.html") ?>
 </body>
 </html>

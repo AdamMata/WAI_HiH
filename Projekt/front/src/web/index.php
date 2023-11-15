@@ -1,31 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <title>Gry!</title>
-    <?php require_once('templates/template-head.php') ?>    
-</head>
+<?php require_once('templates/template-head.html') ?>    
 <body>
     <header class="full-width">
         <h1 id="page">Moje hobby: gry komputerowe</h1>
     </header>
     <div class="flex-container" id="main-flex-container">
-        <nav>
-            <menu>
-                <li>
-                    <a href="index.php">
-                        <img src="images/gamepad.svg" alt="Strona główna" width="100" height="100" id="logo">
-                    </a>
-                </li>
-                <li>
-                    <a href="collection.php">Moja kolekcja</a>
-                    <menu id="sub-list">
-                        <li><a href="collection.php#Strzelanki">strzelanki</a></li>
-                        <li><a href="collection.php#Zarządzanie">zarządzanie</a></li>
-                    </menu>
-                </li>
-                <li><a href="forum.php">Wasze ulubione</a></li>
-            </menu>
-        </nav>
+        <?php require_once('templates/template-nav.html') ?>
 
         <article>
             <h2>Witaj na mojej stronie poświęconej moim ulubionym grom komputerowym!</h2>
@@ -52,9 +31,6 @@
             </p>
         </article>
     </div>
-    <footer class="full-width">
-        Autor: Adam Matczak, s197637<br>
-        Tekst na stronie częściowo wygenerowany ChatemGPT
-    </footer>
+    <?php require_once('templates/template-footer.html') ?>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'business.php';
+
 function index($model) {
 	return "index-view";
 } // TODO : display login
@@ -35,29 +37,24 @@ function forum($model) {
 }				
 
 function receive_form() {
-	$upload_dir = '/var/www/dev/src/images/';
-	
 	$username = $_POST['username'];
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
 	
+	echo $username;
+
 	$wrong_type = null;
 	$extension = $screenshot['type']; // FIXME : check for extension, not type
 	if ($extension !== 'image/jpeg') $wrong_type = true;
-
+	
 	$too_big = null;
 	if ($screenshot['size'] > 1000000) $too_big = true;
 
 	if ($wrong_type && $too_big) return validation::WRONG_EXT_AND_SIZE;
 	if ($wrong_type && !$too_big) return validation::WRONG_EXT;
 	if ($too_big && !$wrong_type) return validation::TOO_BIG;
-
-	$file_name = basename($screenshot['name']);
-	$target = $upload_dir.$username.'_'.$file_name;
-	$tmp_path = $screenshot['tmp_name'];
-
-	if(!move_uploaded_file($tmp_path, $target))
-		echo 'internal upload error';
-
+	
+	save_screenshot($screenshot, $username);
+	
 	return validation::OK;
 }

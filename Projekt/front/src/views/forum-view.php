@@ -19,52 +19,24 @@
                 Odkryj razem z nami różnorodność gier komputerowych, które kształtują naszą pasję i emocje. Może Twoja ulubiona gra jest klasykiem z przeszłości, nowym hitem czy mało znanym dziełem, które zasługuje na więcej uwagi. Dzięki temu forum, możemy razem odkrywać, czym tak wyjątkowe są gry komputerowe i dlaczego kochamy je tak bardzo. Zostań częścią naszej społeczności i podziel się swoją miłością do gier!
             </p>
         </article>
-        <!-- for HiH -->
-        <!-- <form id="form" method="post" action="/forum">
-            <h2>Dodaj własną grę!</h2>
-            <label for="nick">Nick:</label><br>
-            <input type="text" name="nick" id="nick"><br>
+        <div id="form-bar">
+            <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
+                <label for="username">Username</label><br>
+                <input type="text" required name="username" id="username-input"/><br>
 
-            <label for="email">E-mail:</label><br>
-            <input type="email" name="email" id="email"><br>
-            
-            <label for="name">Tytuł gry:</label><br>
-            <input type="text" name="title" id="name"><br>
-            
-            <h3>Kategoria:</h3>
-            <input type="checkbox" name="cat-shooter" id="cat-shooter">
-            <label for="cat-shooter">strzelanka</label><br>
-            <input type="checkbox" name="cat-management" id="cat-management">
-            <label for="cat-management">zarządzanie</label><br>
-            <br>
+                <label for="watermark">Watermark</label><br>
+                <input type="text" required name="watermark" id="watermark-input"/><br>
 
-            <label for="rating">Twoja ocena:</label>
-            <input type="number" min="1" max="10" name="rating" id="rating"><br>
-            
-            <h3>Platforma:</h3>
-            <input type="radio" name="platform" id="platform-steam">
-            <label for="platform-steam">Steam</label><br>
-            <input type="radio" name="platform" id="platform-epic">
-            <label for="platform-epic">Epic Games</label><br>
+                <label for="screenshot">Screenshot</label><br>
+                <input type="file" name="screenshot" id="screenshot-input"/><br>
 
-            <h3>Recenzja</h3>
-            <textarea name="review"></textarea><br>
-        
-            <input type="submit" value="Wyślij" id="submit-button"> <input type="button" value="Wyczyść" id="clear-button">
-        </form> -->
-        <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
-            <label for="username">Username</label><br>
-            <input type="text" name="username" id="username-input"/><br>
-
-            <label for="watermark">Watermark</label><br>
-            <input type="text" name="watermark" id="watermark-input"/><br>
-
-            <label for="screenshot">Screenshot</label><br>
-            <input type="file" name="screenshot" id="screenshot-input"/><br>
-
-            <input type="submit" value="Wyślij" id="submit-button">
-            <input type="button" value="Wyczyść" id="clear-button">
-        </form>
+                <input type="submit" value="Wyślij" id="submit-button">
+                <input type="button" value="Wyczyść" id="clear-button">
+            </form>
+            <span id="validation">
+                <?= $model['validation']; ?> <!-- FIXME : why is there no validation in model? -->
+            </span>
+        </div>
     </div>
     <?php require_once("templates/template-footer.html") ?>
 </body>

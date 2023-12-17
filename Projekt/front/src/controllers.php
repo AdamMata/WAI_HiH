@@ -29,13 +29,14 @@ function forum($model) {
 			break;
 		case "POST":
 			$validation = receive_form();
-			echo $validation;
-			return;
+			$model['validation'] = $validation;
 	}
 	return "forum-view";
 }				
 
 function receive_form() {
+	$upload_dir = '/var/www/dev/src/images/';
+	
 	$username = $_POST['username'];
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
@@ -49,7 +50,14 @@ function receive_form() {
 
 	if ($wrong_type && $too_big) return validation::WRONG_EXT_AND_SIZE;
 	if ($wrong_type && !$too_big) return validation::WRONG_EXT;
-	if ($too_big & !$wrong_type) return validation::TOO_BIG;
+	if ($too_big && !$wrong_type) return validation::TOO_BIG;
 
-	else return validation::OK;
+	$file_name = basename($screenshot['name']);
+	$target = $upload_dir.$username.'_'.$file_name;
+	$tmp_path = $screenshot['tmp_name'];
+
+	if(!move_uploaded_file($tmp_path, $target))
+		echo 'internal upload error';
+
+	return validation::OK;
 }

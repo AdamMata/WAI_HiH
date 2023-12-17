@@ -25,5 +25,5 @@ function dispatch($action) {
 
 function render($view, $model) {
 	extract($model);
-	require 'views/'.$view.'.php';
+	if ($view != '') require 'views/'.$view.'.php';
 } // TODO : understand wtf i am doing

@@ -19,9 +19,8 @@
                 Odkryj razem z nami różnorodność gier komputerowych, które kształtują naszą pasję i emocje. Może Twoja ulubiona gra jest klasykiem z przeszłości, nowym hitem czy mało znanym dziełem, które zasługuje na więcej uwagi. Dzięki temu forum, możemy razem odkrywać, czym tak wyjątkowe są gry komputerowe i dlaczego kochamy je tak bardzo. Zostań częścią naszej społeczności i podziel się swoją miłością do gier!
             </p>
         </article>
-        <form id="form"
-            method="post" action="/odbierz.php"
-        >
+        <!-- for HiH -->
+        <!-- <form id="form" method="post" action="/forum">
             <h2>Dodaj własną grę!</h2>
             <label for="nick">Nick:</label><br>
             <input type="text" name="nick" id="nick"><br>
@@ -52,6 +51,19 @@
             <textarea name="review"></textarea><br>
         
             <input type="submit" value="Wyślij" id="submit-button"> <input type="button" value="Wyczyść" id="clear-button">
+        </form> -->
+        <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
+            <label for="username">Username</label><br>
+            <input type="text" name="username" id="username-input"/><br>
+
+            <label for="watermark">Watermark</label><br>
+            <input type="text" name="watermark" id="watermark-input"/><br>
+
+            <label for="screenshot">Screenshot</label><br>
+            <input type="file" name="screenshot" id="screenshot-input"/><br>
+
+            <input type="submit" value="Wyślij" id="submit-button">
+            <input type="button" value="Wyczyść" id="clear-button">
         </form>
     </div>
     <?php require_once("templates/template-footer.html") ?>

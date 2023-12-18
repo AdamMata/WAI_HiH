@@ -34,7 +34,7 @@
                 <input type="button" value="Wyczyść" id="clear-button">
             </form>
             <span id="validation">
-                <?= $model['validation']; ?> <!-- FIXME : why is there no validation in model? -->
+                <?= $validation; ?> <!-- FIXME : why is there no validation in model? -->
             </span>
         </div>
     </div>

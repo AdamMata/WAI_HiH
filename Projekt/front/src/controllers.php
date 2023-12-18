@@ -19,13 +19,13 @@ function account($model) { // TODO : implement
 }
 
 class validation {
-	const OK = 'OK';
-	const WRONG_EXT = 'WRONG_EXT';
-	const TOO_BIG = 'TOO_BIG';
-	const WRONG_EXT_AND_SIZE = 'WRONG_EXT_AND_SIZE';
+	const OK = 'Dziękujemy!';
+	const WRONG_EXT = 'Wyślij plik <code>.png</code> lub <code>.jpg</code>';
+	const TOO_BIG = 'Rozmiar przekracza 1MB';
+	const WRONG_EXT_AND_SIZE = 'Wyślij plik <code>.png</code> lub <code>.jpg</code> mniejszy niż 1MB';
 }
 
-function forum($model) {
+function forum(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
 			break;
@@ -35,26 +35,3 @@ function forum($model) {
 	}
 	return "forum-view";
 }				
-
-function receive_form() {
-	$username = $_POST['username'];
-	$watermark = $_POST['watermark'];
-	$screenshot = $_FILES['screenshot'];
-	
-	echo $username;
-
-	$wrong_type = null;
-	$extension = $screenshot['type']; // FIXME : check for extension, not type
-	if ($extension !== 'image/jpeg') $wrong_type = true;
-	
-	$too_big = null;
-	if ($screenshot['size'] > 1000000) $too_big = true;
-
-	if ($wrong_type && $too_big) return validation::WRONG_EXT_AND_SIZE;
-	if ($wrong_type && !$too_big) return validation::WRONG_EXT;
-	if ($too_big && !$wrong_type) return validation::TOO_BIG;
-	
-	save_screenshot($screenshot, $username);
-	
-	return validation::OK;
-}

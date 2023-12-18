@@ -33,5 +33,6 @@ function forum(&$model) {
 			$validation = receive_form();
 			$model['validation'] = $validation;
 	}
+	$model['gallery'] = get_gallery();
 	return "forum-view";
 }				

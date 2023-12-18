@@ -8,7 +8,7 @@ function receive_form() {
 	$wrong_type = null;
 	$finfo = finfo_open(FILEINFO_MIME_TYPE);
 	$mime_type = finfo_file($finfo, $screenshot['tmp_name']);
-	if ($mime_type === 'image/jpeg') {
+	if ($mime_type === 'image/jpg' || $mime_type === 'image/png') {
 		$screenshot = $_FILES['screenshot'];
 		$wrong_type = false;
 	}	

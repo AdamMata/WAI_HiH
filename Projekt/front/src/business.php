@@ -21,23 +21,41 @@ function receive_form() {
 	if ($too_big && !$wrong_type) return validation::TOO_BIG;
 	
 	save_screenshot($screenshot, $username);
+	save_watermark($screenshot, $username, $watermark);
+	save_thumbnail($screenshot, $username, $watermark);
 	
 	return validation::OK;
 }
 
-const gallery_dir = '/var/www/dev/src/images/'; 
+const images_dir = '/var/www/dev/src/web/images/'; 
 
 function save_screenshot($screenshot, $username) {
 	$file_name = basename($screenshot['name']);
-	$target = gallery_dir.$username.'_'.$file_name;
+	$target = images_dir.'originals/'.$username.'-'.$file_name;
 	$tmp_path = $screenshot['tmp_name'];
 
-	if(!move_uploaded_file($tmp_path, $target))
-		echo 'internal upload error';
+	if(!move_uploaded_file($tmp_path, $target)) echo 'internal upload error';
+}
+
+function save_watermark($screenshot, $username, $watermark) {
+	$file_name = basename($screenshot['name']);
+	$target = images_dir.'watermarks/'.'watermark_'.$username.'-'.$file_name;
+	$tmp_path = $screenshot['tmp_name'];
+
+	if(!move_uploaded_file($tmp_path, $target)) echo 'internal upload error';
+}
+
+function save_thumbnail($screenshot, $username, $watermark) {
+	$file_name = basename($screenshot['name']);
+	$target = images_dir.'thumbnails/'.'thumb_'.$username.'_'.$file_name;
+	$tmp_path = $screenshot['tmp_name'];
+
+	if(!move_uploaded_file($tmp_path, $target)) echo 'internal upload error';
 }
 
 function get_gallery() {
-	$files = scandir(gallery_dir);
-	$files = array_diff(scandir(gallery_dir), array('.', '..'));
+	$files = scandir(images_dir.'originals');
+	$files = array_diff(scandir(images_dir.'originals'), array('.', '..'));
+
 	return $files;
 }

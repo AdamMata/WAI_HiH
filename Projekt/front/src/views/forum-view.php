@@ -21,7 +21,7 @@
             </article>
             <div id="gallery">
                 <?php foreach ($gallery as &$thumbnail):?>
-                    <?= $thumbnail ?>
+                    <?= '<img src="'.'../images/originals/'.$thumbnail.'"/>' ?>
                 <?php endforeach ?> 
             </div>  
         </div>     

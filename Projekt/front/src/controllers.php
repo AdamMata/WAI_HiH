@@ -18,7 +18,7 @@ function account($model) { // TODO : implement
 	return "account-view";
 }
 
-class validation {
+class Validation {
 	const OK = 'Dziękujemy!';
 	const WRONG_EXT = 'Wyślij plik <code>.png</code> lub <code>.jpg</code>';
 	const TOO_BIG = 'Rozmiar przekracza 1MB';

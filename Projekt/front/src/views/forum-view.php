@@ -27,13 +27,16 @@
         </div>     
         <div id="form-bar">
             <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
-                <label for="username">Username</label><br>
+                <label for="username">Autor</label><br>
                 <input type="text" required name="username" id="username-input"/><br>
 
-                <label for="watermark">Watermark</label><br>
+                <label for="title">Tytuł</label><br>
+                <input type="text" name="title" id="title-input"/><br>
+
+                <label for="watermark">Znak wodny</label><br>
                 <input type="text" required name="watermark" id="watermark-input"/><br>
 
-                <label for="screenshot">Screenshot</label><br>
+                <label for="screenshot">Zdjęcie</label><br>
                 <input type="file" name="screenshot" id="screenshot-input"/><br>
 
                 <input type="submit" value="Wyślij" id="submit-button">

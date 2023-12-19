@@ -9,25 +9,6 @@ const originals_dir = images_dir.'originals/';
 const thumbnails_dir = images_dir.'thumbnails/';
 const watermarks_dir = images_dir.'watermarks/';
 
-function receive_form() {
-	$username = $_POST['username'];
-	$watermark = $_POST['watermark'];
-	$screenshot = $_FILES['screenshot'];
-
-	$extension = get_extension($screenshot);
-
-	$wrong_type = !check_extension($screenshot, $extension);
-	$too_big = ($screenshot['size'] > 1000000);
-
-	if ($wrong_type && $too_big)  return Validation::WRONG_EXT_AND_SIZE;
-	if ($wrong_type && !$too_big) return Validation::WRONG_EXT;
-	if ($too_big && !$wrong_type) return Validation::TOO_BIG;
-
-	save_images($screenshot, $username, $watermark);
-
-	return Validation::OK;
-}
-
 function save_images($screenshot, $username, $watermark) {
 	$extension = get_extension($screenshot);
 
@@ -68,12 +49,11 @@ function create_watermark($GD_original, $watermark) {
 
 	$GD_watermark = imagecreatetruecolor($original_w, $original_h);
 	imagecopy($GD_watermark, $GD_original, 0,0, 0,0, $original_w,$original_h);
-	// imagestring($GD_watermark, 5, $original_w/2, $original_h/2, $watermark, 888888);
 	imagettftext(
 		$GD_watermark, 30, 0, 
 		$original_w/4,$original_h/2, 
 		imagecolorallocate($GD_watermark, 200, 200, 200),
-		'../comicz.ttf', 
+		'../assets/comicz.ttf', 
 		$watermark
 	);
 
@@ -88,11 +68,4 @@ function create_thumbnail($GD_original, $GD_watermark) {
 	imagecopyresized($GD_thumbnail, $GD_watermark, 0,0, 0,0, thumbnail_w,thumbnail_h, $original_w,$original_h);
 
 	return $GD_thumbnail;
-}
-
-function get_gallery() {
-	$files = scandir(images_dir.'originals');
-	$files = array_diff(scandir(images_dir.'originals'), array('.', '..'));
-
-	return $files;
 }

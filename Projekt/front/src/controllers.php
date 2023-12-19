@@ -1,6 +1,6 @@
 <?php
 
-require_once 'business.php';
+require_once 'business/business.php';
 
 function index($model) {
 	return "index-view";

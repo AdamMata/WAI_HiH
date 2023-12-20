@@ -28,6 +28,7 @@ class Validation {
 function forum(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
+			$model['validation'] = '';
 			break;
 		case "POST":
 			$validation = receive_form();

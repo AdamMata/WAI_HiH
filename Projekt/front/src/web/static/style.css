@@ -190,3 +190,9 @@ header {
     font-size: x-large;
     font-family: 'Pixelify Sans', sans-serif;
 }
+
+.gallery-entry {
+    text-align: center;
+    list-style-type: none;
+    margin: 5px;
+}

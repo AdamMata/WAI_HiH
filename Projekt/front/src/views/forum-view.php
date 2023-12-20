@@ -22,13 +22,11 @@
             <div id="gallery">
                 <?php foreach ($gallery as &$entry):?>
                     <?= 
-                        '<div class="gallery-entry">'.
-                            '<img src="'.'../images/thumbnails/'.$entry['name'].'"/>'.
-                            '<span>'.
-                                $entry['meta']['author'].' '.
-                                $entry['meta']['title'].' '.
-                            '</span>'.
-                        '</div>'
+                        '<ul class="gallery-entry">'.
+                            '<li><img src="'.'../images/thumbnails/'.$entry['name'].'"/>'.'</li>'.
+                            '<li>'.'Autor: '.$entry['meta']['author'].'</li>'.
+                            '<li>'.'Tytuł: '.$entry['meta']['title'].'</li>'.
+                        '</ul>'
                     ?>
                 <?php endforeach ?> 
             </div>  

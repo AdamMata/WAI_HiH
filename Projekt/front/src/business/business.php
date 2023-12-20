@@ -1,6 +1,7 @@
 <?php
 
 require_once 'gallery.php';
+require_once 'db.php';
 
 function receive_form() {
 	$username = $_POST['username'];
@@ -15,14 +16,50 @@ function receive_form() {
 	if ($wrong_type && !$too_big) return Validation::WRONG_EXT;
 	if ($too_big && !$wrong_type) return Validation::TOO_BIG;
 
-	save_images($screenshot, $username, $watermark);
+	$saved_file_name = save_images($screenshot, $username, $watermark);
+	save_image_metadata($saved_file_name, $username, $title);
 
 	return Validation::OK;
 }
 
 function get_gallery() {
 	$files = scandir(images_dir.'originals');
-	$files = array_diff(scandir(images_dir.'originals'), array('.', '..'));
+	$files = array_diff($files, array('.', '..'));
 
-	return $files;
+	$gallery = [];
+	foreach ($files as $file){
+		$meta = get_image_metadata($file);
+		array_push(
+			$gallery, 
+			[
+				'name' => $file, 
+				'meta' => $meta
+			]
+		);
+	}
+
+	return $gallery;
+}
+
+function save_image_metadata($saved_file_name, $username, $title) {
+	$db = get_db();
+	$meta = [
+		'author' => $username,
+		'title' => $title,
+	];
+	$image = [
+		'name' => $saved_file_name,
+		'meta' => $meta
+	];
+
+	$db->screenshots->insertOne($image);
+}
+
+function get_image_metadata($file_name) {
+	$db = get_db();
+	$query = [
+		'name' => $file_name
+	];
+	$image = $db->screenshots->findOne($query);
+	return $image['meta'];
 }

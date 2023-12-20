@@ -27,6 +27,8 @@ function save_images($screenshot, $username, $watermark) {
 	imagepng($GD_original, originals_dir.$target_file_name);
 	imagepng($GD_watermark, watermarks_dir.$target_file_name);
 	imagepng($GD_thumbnail, thumbnails_dir.$target_file_name);
+
+	return $target_file_name;
 }
 
 function check_extension($screenshot, $extension) {

@@ -20,8 +20,16 @@
                 </p> -->
             </article>
             <div id="gallery">
-                <?php foreach ($gallery as &$thumbnail):?>
-                    <?= '<img src="'.'../images/thumbnails/'.$thumbnail.'"/>' ?>
+                <?php foreach ($gallery as &$entry):?>
+                    <?= 
+                        '<div class="gallery-entry">'.
+                            '<img src="'.'../images/thumbnails/'.$entry['name'].'"/>'.
+                            '<span>'.
+                                $entry['meta']['author'].' '.
+                                $entry['meta']['title'].' '.
+                            '</span>'.
+                        '</div>'
+                    ?>
                 <?php endforeach ?> 
             </div>  
         </div>     

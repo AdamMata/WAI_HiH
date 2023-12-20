@@ -10,11 +10,46 @@ function collection($model) {
 	return "collection-view";	
 } // TODO : display login
 
-function account($model) { // TODO : implement
-	// if not logged in
-		// log in or register
-	// else - logged in
-		// show selected items?
+class Auth {
+	const OK = 'Zalogowano';
+	const WRONG_PW = 'Nieprawidłowe hasło';
+	const NO_USER = 'Nie ma takiego użytkownika';
+	const USER_EXISTS = 'Istnieje już użytkownik o tym loginie';
+	const PWS_DIFFER = 'Hasła nie są identyczne';
+}
+
+function register($model) {
+	switch ($_SERVER['REQUEST_METHOD']) {
+		case 'GET':
+			$model['auth'] = '';
+			break;
+		case 'POST':
+			if ($_POST['password'] !== $_POST['repeat']){
+				$auth = Auth::PWS_DIFFER;
+			}
+			else {
+				$auth = register_user($_POST['login'], $_POST['password']);
+			}
+			$model['auth'] = $auth;
+			break;
+	}
+	return "register-view";
+}
+
+function account($model) {
+	switch ($_SERVER['REQUEST_METHOD']) {
+		case 'GET':
+			$model['auth'] = '';
+			break;
+		case 'POST': // tries to log in
+			$auth = login_user();
+			$model['auth'] = $auth;
+			if ($auth === Auth::OK) {
+				$user = get_user($_POST['login']);
+				$model['user'] = ['login'];
+			}
+			break;
+	}
 	return "account-view";
 }
 

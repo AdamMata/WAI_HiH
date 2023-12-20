@@ -63,3 +63,51 @@ function get_image_metadata($file_name) {
 	$image = $db->screenshots->findOne($query);
 	return $image['meta'];
 }
+
+const hashing_algo = PASSWORD_DEFAULT;
+
+function get_user($login) {
+	$db = get_db();
+	$query = [
+		'login' => $login 
+	];
+
+	$user = $db->users->findOne($query);
+	return $user;
+}
+
+function login_user() {
+	$login = $_POST['login'];
+	$password = $_POST['password'];
+
+	$hash = password_hash($password, hashing_algo);
+	$user = get_user($login);
+
+	if ($user === null) return Auth::NO_USER;
+	if (password_verify($password, $hash)) {
+		echo 'logged in';
+		return Auth::OK;
+	}
+	else {
+		echo 'wrong password';
+		return Auth::WRONG_PW;
+	}	
+}
+
+function register_user($login, $password) {
+	$db = get_db();
+
+	$user = [
+		'login' => $login,
+		'pwhash' => password_hash($password, hashing_algo)
+	];
+
+	if ( $db->users->findOne($user) != null ) {
+		echo 'user exists';
+		return Auth::USER_EXISTS;
+	}
+
+	$db->users->insertOne($user);
+	echo 'user created';
+	return Auth::OK;
+}

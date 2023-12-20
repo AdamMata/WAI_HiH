@@ -13,12 +13,12 @@ const ROUTING = [
 function dispatch($action) {
 	$controller_fn = ROUTING[$action];
 	$model = [];
-	$view = $controller_fn($model); // populate model using controller_fn function
+	$view = $controller_fn($model);
 
 	if (strpos($view, 'redirect:') !== 0){
 		render($view, $model);
 	} else {
-		$url = substr($view, strlen('redirect:')); // redirect where?
+		$url = substr($view, strlen('redirect:'));
 		header('Location: '.$url);
 		exit;
 	}
@@ -27,4 +27,4 @@ function dispatch($action) {
 function render($view, $model) {
 	extract($model);
 	if ($view != '') require 'views/'.$view.'.php';
-} // TODO : understand wtf i am doing
+}

@@ -2,11 +2,11 @@
 
 require_once 'business/business.php';
 
-function index($model) {
+function index(&$model) {
 	return "index-view";
 } // TODO : display login
 
-function collection($model) {
+function collection(&$model) {
 	return "collection-view";	
 } // TODO : display login
 
@@ -18,7 +18,7 @@ class Auth {
 	const PWS_DIFFER = 'Hasła nie są identyczne';
 }
 
-function register($model) {
+function register(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
 			$model['auth'] = '';
@@ -36,18 +36,18 @@ function register($model) {
 	return "register-view";
 }
 
-function account($model) {
+function account(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
 			$model['auth'] = '';
 			break;
 		case 'POST': // tries to log in
 			$auth = login_user();
-			$model['auth'] = $auth;
 			if ($auth === Auth::OK) {
 				$user = get_user($_POST['login']);
-				$model['user'] = ['login'];
+				$model['user'] = $user['login'];
 			}
+			$model['auth'] = $auth;
 			break;
 	}
 	return "account-view";

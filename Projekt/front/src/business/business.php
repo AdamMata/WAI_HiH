@@ -80,16 +80,14 @@ function login_user() {
 	$login = $_POST['login'];
 	$password = $_POST['password'];
 
-	$hash = password_hash($password, hashing_algo);
+	$associate_hash = get_user($login)['pwhash'];
 	$user = get_user($login);
 
 	if ($user === null) return Auth::NO_USER;
-	if (password_verify($password, $hash)) {
-		echo 'logged in';
+	if (password_verify($password, $associate_hash)) {
 		return Auth::OK;
 	}
 	else {
-		echo 'wrong password';
 		return Auth::WRONG_PW;
 	}	
 }
@@ -103,11 +101,9 @@ function register_user($login, $password) {
 	];
 
 	if ( $db->users->findOne($user) != null ) {
-		echo 'user exists';
 		return Auth::USER_EXISTS;
 	}
 
 	$db->users->insertOne($user);
-	echo 'user created';
 	return Auth::OK;
 }

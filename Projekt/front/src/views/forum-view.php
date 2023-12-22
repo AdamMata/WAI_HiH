@@ -12,24 +12,20 @@
                 <p>
                     Witaj na naszym forum poświęconym ulubionym grą komputerowym! To miejsce, gdzie każdy z nas może podzielić się swoją pasją do gier, wymienić doświadczeniami i zainspirować innych do odkrywania nowych tytułów. Gdy wkraczamy w świat gier komputerowych, zanurzamy się w niesamowitych historiach, wyzwaniach i przygodach, które często zostają z nami na długo.
                 </p>
-                <!-- <p>
-                    Na tym forum chcemy stworzyć przestrzeń, w której możemy dzielić się naszymi ulubionymi grami, opisywać, dlaczego są dla nas wyjątkowe, i polecać je innym pasjonatom. Niezależnie od tego, czy jesteś zapalonym graczem czy dopiero zaczynasz swoją przygodę z grami, to miejsce jest dla Ciebie. Tutaj znajdziesz inspirację, nowe pomysły na gry do wypróbowania i możliwość wymiany poglądów na temat swoich ulubionych tytułów.
-                </p>
-                <p>
-                    Odkryj razem z nami różnorodność gier komputerowych, które kształtują naszą pasję i emocje. Może Twoja ulubiona gra jest klasykiem z przeszłości, nowym hitem czy mało znanym dziełem, które zasługuje na więcej uwagi. Dzięki temu forum, możemy razem odkrywać, czym tak wyjątkowe są gry komputerowe i dlaczego kochamy je tak bardzo. Zostań częścią naszej społeczności i podziel się swoją miłością do gier!
-                </p> -->
             </article>
             <div id="gallery">
-                <?php foreach ($gallery as &$entry):?>
-                    <?= 
-                        '<ul class="gallery-entry">'.
-                            '<li><img src="'.'../images/thumbnails/'.$entry['name'].'"/>'.'</li>'.
-                            '<li>'.'Autor: '.$entry['meta']['author'].'</li>'.
-                            '<li>'.'Tytuł: '.$entry['meta']['title'].'</li>'.
-                        '</ul>'
-                    ?>
-                <?php endforeach ?> 
-            </div>  
+                <?php foreach ($gallery as $entry):?>
+                    <ul class="gallery-entry">
+                        <li>
+                            <a href="../images/watermarks/<?=$entry['name']?>" target="_blank">
+                                <img src="../images/thumbnails/<?=$entry['name']?>" />
+                            </a>
+                        </li>
+                        <li>Autor: <?=$entry['meta']['author']?></li>
+                        <li>Tytuł: <?=$entry['meta']['title']?></li>
+                    </ul>
+                <?php endforeach ?>
+            </div>
         </div>     
         <div id="form-bar">
             <form id="form" method="POST" action="/forum" enctype="multipart/form-data">

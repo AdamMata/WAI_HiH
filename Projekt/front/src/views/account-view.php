@@ -17,7 +17,7 @@
 				<a href="/register">Załóż konto</a>
 			<?php else: ?>
 				<h2>Witaj <?=$user?></h2>
-				
+				<a href="/account?perform=logout">Wyloguj</a>				
 			<?php endif ?>
 		</div>
 	</div>

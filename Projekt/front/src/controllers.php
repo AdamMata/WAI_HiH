@@ -19,6 +19,7 @@ class Auth {
 }
 
 function register(&$model) {
+	// get_db()->users->drop();
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
 			$model['auth'] = '';
@@ -30,7 +31,13 @@ function register(&$model) {
 			else {
 				$auth = register_user($_POST['login'], $_POST['password']);
 			}
-			$model['auth'] = $auth;
+
+			if ($auth === Auth::OK){
+				$model['auth'] = 'Utworzono konto';
+			}
+			else{
+				$model['auth'] = $auth;
+			}
 			break;
 	}
 	return "register-view";
@@ -39,13 +46,25 @@ function register(&$model) {
 function account(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
+			if ($_GET['perform'] === 'logout') {
+				session_destroy();
+				unset($_SESSION['user']);
+			}
+
+			$user = $_SESSION['user'];
+			if (isset($_SESSION['user'])) {
+				$model['user'] = $user;
+			}
 			$model['auth'] = '';
 			break;
+
 		case 'POST': // tries to log in
 			$auth = login_user($_POST['login'], $_POST['password']);
 			if ($auth === Auth::OK) {
 				$user = get_user($_POST['login']);
+				$_SESSION['user'] = $user['login'];
 				$model['user'] = $user['login'];
+				session_start();
 			}
 			$model['auth'] = $auth;
 			break;

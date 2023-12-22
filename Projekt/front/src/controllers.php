@@ -67,7 +67,6 @@ function account(&$model) {
 				$user = get_user($_POST['login']);
 				$_SESSION['user'] = $user['login'];
 				$model['user'] = $user['login'];
-				session_start();
 			}
 			$model['auth'] = $auth;
 			break;

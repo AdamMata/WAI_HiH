@@ -98,7 +98,11 @@ function register_user($login, $password) {
 		'pwhash' => password_hash($password, hashing_algo)
 	];
 
-	if ( $db->users->findOne($user) != null ) {
+	$query = [
+		'login' => $login
+	];
+
+	if ( $db->users->findOne($query) != null ) {
 		return Auth::USER_EXISTS;
 	}
 

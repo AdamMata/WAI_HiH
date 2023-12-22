@@ -26,6 +26,15 @@
                     </ul>
                 <?php endforeach ?>
             </div>
+            <?php
+                $cur = $model['page'];
+                $min = 1; $max = 2; // todo : share max in $model
+                if ($cur > $min) $prev = $cur - 1;
+                if ($cur < $max) $next = $cur + 1;
+            ?>
+            <a href="/forum?page=<?=$prev?>"><?=$prev?></a>
+            <?=$cur?>
+            <a href="/forum?page=<?=$next?>"><?=$next?></a>
         </div>     
         <div id="form-bar">
             <form id="form" method="POST" action="/forum" enctype="multipart/form-data">

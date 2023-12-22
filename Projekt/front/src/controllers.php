@@ -2,6 +2,8 @@
 
 require_once 'business/business.php';
 
+// get_db()->users->drop();
+// get_db()->screenshots->drop();
 function index(&$model) {
 	return "index-view";
 }
@@ -19,7 +21,6 @@ class Auth {
 }
 
 function register(&$model) {
-	// get_db()->users->drop();
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
 			$model['auth'] = '';
@@ -80,15 +81,18 @@ class Validation {
 }
 
 function forum(&$model) {
+	$page = 1;
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
 			$model['validation'] = '';
+			if (isset($_GET['page'])) $page = $_GET['page'];
 			break;
 		case "POST":
 			$validation = receive_form();
 			$model['validation'] = $validation;
 	}
-	$model['gallery'] = get_gallery();
+	$model['page'] = $page;
+	$model['gallery'] = get_gallery($page);
 	return "forum-view";
 }
 
@@ -98,4 +102,8 @@ function receive_form() {
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
 	return handle_form($username, $title, $watermark, $screenshot);
+}
+
+function db() {
+	return "db-view";
 }

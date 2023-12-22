@@ -17,22 +17,22 @@ function handle_form($username, $title, $watermark, $screenshot) {
 	return Validation::OK;
 }
 
-function get_gallery() {
+const page_size = 2;
+function get_gallery($page) {
 	$files = scandir(images_dir.'originals');
 	$files = array_diff($files, array('.', '..'));
 
-	$gallery = [];
-	foreach ($files as $file){
-		$meta = get_image_metadata($file);
-		array_push(
-			$gallery, 
-			[
-				'name' => $file, 
-				'meta' => $meta
-			]
-		);
-	}
+	$db = get_db();
+	$query = [
 
+	];
+	$opts = [
+		'skip' => ($page - 1)*page_size,
+		'limit' => page_size
+	];
+	
+	$gallery = $db->screenshots->find($query, $opts);
+	
 	return $gallery;
 }
 

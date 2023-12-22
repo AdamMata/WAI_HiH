@@ -7,7 +7,8 @@ const ROUTING = [
 	"/collection"=> "collection",
 	"/account"=> "account",
 	"/forum"=> "forum",
-	"/register"=> "register"
+	"/register"=> "register",
+	"/db" => "db"
 ];
 
 function dispatch($action) {

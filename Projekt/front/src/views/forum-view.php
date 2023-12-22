@@ -28,13 +28,17 @@
             </div>
             <?php
                 $cur = $model['page'];
-                $min = 1; $max = 2; // todo : share max in $model
+                $min = 1; $max = $model['max'];
                 if ($cur > $min) $prev = $cur - 1;
                 if ($cur < $max) $next = $cur + 1;
             ?>
-            <a href="/forum?page=<?=$prev?>"><?=$prev?></a>
+            <?php if(isset($prev)): ?>
+                <a href="/forum?page=<?=$prev?>"><?=$prev?></a>
+            <?php endif ?>
             <?=$cur?>
-            <a href="/forum?page=<?=$next?>"><?=$next?></a>
+            <?php if(isset($next)): ?>
+                <a href="/forum?page=<?=$next?>"><?=$next?></a>
+            <?php endif ?>
         </div>     
         <div id="form-bar">
             <form id="form" method="POST" action="/forum" enctype="multipart/form-data">

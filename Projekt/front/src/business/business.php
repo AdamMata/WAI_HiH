@@ -36,6 +36,12 @@ function get_gallery($page) {
 	return $gallery;
 }
 
+function get_max_page() {
+	$db = get_db();
+
+	return count($db->screenshots->find());
+}
+
 function save_image_metadata($saved_file_name, $username, $title) {
 	$db = get_db();
 	$meta = [

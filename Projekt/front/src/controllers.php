@@ -47,13 +47,15 @@ function register(&$model) {
 function account(&$model) {
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
-			if ($_GET['perform'] === 'logout') {
-				session_destroy();
-				unset($_SESSION['user']);
+			if (isset($_GET['perform']) && $_GET['perform'] === 'logout') {
+				if(isset($_SESSION)){
+					session_destroy();
+					unset($_SESSION['user']);
+				}
 			}
 
-			$user = $_SESSION['user'];
 			if (isset($_SESSION['user'])) {
+				$user = $_SESSION['user'];
 				$model['user'] = $user;
 			}
 			$model['auth'] = '';
@@ -93,6 +95,7 @@ function forum(&$model) {
 	}
 	$model['page'] = $page;
 	$model['gallery'] = get_gallery($page);
+	$model['max'] = get_max_page();
 	return "forum-view";
 }
 

@@ -3,12 +3,7 @@
 require_once 'gallery.php';
 require_once 'db.php';
 
-function receive_form() {
-	$username = $_POST['username'];
-	$title = $_POST['title'];
-	$watermark = $_POST['watermark'];
-	$screenshot = $_FILES['screenshot'];
-
+function handle_form($username, $title, $watermark, $screenshot) {
 	$wrong_type = !check_extension($screenshot, get_extension($screenshot));
 	$too_big = ($screenshot['size'] > 1000000);
 
@@ -76,10 +71,7 @@ function get_user($login) {
 	return $user;
 }
 
-function login_user() {
-	$login = $_POST['login'];
-	$password = $_POST['password'];
-
+function login_user($login, $password) {
 	$associate_hash = get_user($login)['pwhash'];
 	$user = get_user($login);
 

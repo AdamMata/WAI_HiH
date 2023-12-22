@@ -4,11 +4,11 @@ require_once 'business/business.php';
 
 function index(&$model) {
 	return "index-view";
-} // TODO : display login
+}
 
 function collection(&$model) {
 	return "collection-view";	
-} // TODO : display login
+}
 
 class Auth {
 	const OK = 'Zalogowano';
@@ -42,7 +42,7 @@ function account(&$model) {
 			$model['auth'] = '';
 			break;
 		case 'POST': // tries to log in
-			$auth = login_user();
+			$auth = login_user($_POST['login'], $_POST['password']);
 			if ($auth === Auth::OK) {
 				$user = get_user($_POST['login']);
 				$model['user'] = $user['login'];
@@ -71,4 +71,12 @@ function forum(&$model) {
 	}
 	$model['gallery'] = get_gallery();
 	return "forum-view";
-}				
+}
+
+function receive_form() {
+	$username = $_POST['username'];
+	$title = $_POST['title'];
+	$watermark = $_POST['watermark'];
+	$screenshot = $_FILES['screenshot'];
+	return handle_form($username, $title, $watermark, $screenshot);
+}

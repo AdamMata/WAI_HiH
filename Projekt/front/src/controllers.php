@@ -83,17 +83,26 @@ class Validation {
 
 function forum(&$model) {
 	$page = 1;
+	$_SESSION['favs'] = [];
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
 			$model['validation'] = '';
 			if (isset($_GET['page'])) $page = $_GET['page'];
 			break;
 		case "POST":
-			$validation = receive_form();
-			$model['validation'] = $validation;
+			switch ($_POST['form']){
+				case 'fav':
+					save_favs();
+					break;
+				case 'upload':
+					$validation = receive_form();
+					$model['validation'] = $validation;
+					break;
+				}
 	}
+	$model['gallery'] = get_gallery_page($page);
 	$model['page'] = $page;
-	$model['gallery'] = get_gallery($page);
+	if (isset($_SESSION['favs'])) {$model['favs'] = $_SESSION['favs'];};
 	$model['max'] = get_max_page();
 	return "forum-view";
 }
@@ -104,6 +113,16 @@ function receive_form() {
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
 	return handle_form($username, $title, $watermark, $screenshot);
+}
+
+function save_favs() {
+	$gallery = get_gallery();
+	print_r($_POST);
+	foreach ($gallery as $entry) {
+		$file = $entry['name'];
+		str_replace(['%und', '%per', '%dsh'], ['_', '.', '-'], $file); //FIXME
+		$_SESSION['favs'][$file] = $_POST[$file];
+	}
 }
 
 function db() {

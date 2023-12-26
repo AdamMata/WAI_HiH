@@ -18,7 +18,7 @@ function handle_form($username, $title, $watermark, $screenshot) {
 }
 
 const page_size = 2;
-function get_gallery($page) {
+function get_gallery_page($page) {
 	$files = scandir(images_dir.'originals');
 	$files = array_diff($files, array('.', '..'));
 
@@ -33,6 +33,21 @@ function get_gallery($page) {
 	
 	$gallery = $db->screenshots->find($query, $opts);
 	
+	return $gallery;
+}
+
+function get_gallery() {
+	$files = scandir(images_dir.'originals');
+	$files = array_diff($files, array('.', '..'));
+
+	$db = get_db();
+	$query = [
+
+	];
+	$opts = [
+
+	];
+	$gallery = $db->screenshots->find($query, $opts);
 	return $gallery;
 }
 

@@ -117,14 +117,33 @@ function receive_form() {
 
 function save_favs() {
 	$gallery = get_gallery();
-	print_r($_POST);
 	foreach ($gallery as $entry) {
-		$file = $entry['name'];
-		str_replace(['%und', '%per', '%dsh'], ['_', '.', '-'], $file); //FIXME
-		$_SESSION['favs'][$file] = $_POST[$file];
+		$file = full_encode($entry['name']);
+		if (isset($_POST[$file])) {
+			$_SESSION['favs'][full_decode($file)] = $_POST[$file];
+		}
 	}
 }
 
 function db() {
 	return "db-view";
 }
+
+/* encode in a url-friendly way */
+/* https://stackoverflow.com/a/12093201 */
+function full_encode($str) {
+	$str = urlencode($str);
+	$str = str_replace('.', '%2E', $str);
+	$str = str_replace('-', '%2D', $str);
+	$str = str_replace(' ', '%20', $str );
+	return $str;
+}
+
+function full_decode($str) {
+	$str = str_replace('%2E', '.', $str);
+	$str = str_replace('%2D', '-', $str);
+	$str = str_replace('%20', ' ', $str );
+	$str = urldecode($str);
+	return $str;
+}
+/* */

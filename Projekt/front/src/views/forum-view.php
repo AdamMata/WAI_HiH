@@ -27,9 +27,11 @@
                             <label for="fav">Ulubione</label>
                             <input 
                                 type="checkbox" 
-                                <?php $name = str_replace(['_', '.', '-'], ['%und', '%per', '%dsh'], $entry['name']); //FIXME ?>
-                                name="<?=$name?>"
-                                <?php if (isset($fav) && $fav[$entry['name']] === 'on'): ?>
+                                name="<?=full_encode($entry['name'])?>"
+                                <?php if (
+                                    isset($favs) &&
+                                    isset($favs[$entry['name']])
+                                ): ?>
                                     checked=""
                                 <?php endif ?>
                                 class="fav-box" 

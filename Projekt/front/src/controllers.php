@@ -83,17 +83,26 @@ class Validation {
 
 function forum(&$model) {
 	$page = 1;
+	$_SESSION['favs'] = [];
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
 			$model['validation'] = '';
 			if (isset($_GET['page'])) $page = $_GET['page'];
 			break;
 		case "POST":
-			$validation = receive_form();
-			$model['validation'] = $validation;
+			switch ($_POST['form']){
+				case 'fav':
+					save_favs();
+					break;
+				case 'upload':
+					$validation = receive_form();
+					$model['validation'] = $validation;
+					break;
+				}
 	}
+	$model['gallery'] = get_gallery_page($page);
 	$model['page'] = $page;
-	$model['gallery'] = get_gallery($page);
+	if (isset($_SESSION['favs'])) {$model['favs'] = $_SESSION['favs'];};
 	$model['max'] = get_max_page();
 	return "forum-view";
 }
@@ -106,6 +115,35 @@ function receive_form() {
 	return handle_form($username, $title, $watermark, $screenshot);
 }
 
+function save_favs() {
+	$gallery = get_gallery();
+	foreach ($gallery as $entry) {
+		$file = full_encode($entry['name']);
+		if (isset($_POST[$file])) {
+			$_SESSION['favs'][full_decode($file)] = $_POST[$file];
+		}
+	}
+}
+
 function db() {
 	return "db-view";
 }
+
+/* encode in a url-friendly way */
+/* https://stackoverflow.com/a/12093201 */
+function full_encode($str) {
+	$str = urlencode($str);
+	$str = str_replace('.', '%2E', $str);
+	$str = str_replace('-', '%2D', $str);
+	$str = str_replace(' ', '%20', $str );
+	return $str;
+}
+
+function full_decode($str) {
+	$str = str_replace('%2E', '.', $str);
+	$str = str_replace('%2D', '-', $str);
+	$str = str_replace('%20', ' ', $str );
+	$str = urldecode($str);
+	return $str;
+}
+/* */

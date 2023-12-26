@@ -23,8 +23,27 @@
                         </li>
                         <li>Autor: <?=$entry['meta']['author']?></li>
                         <li>Tytuł: <?=$entry['meta']['title']?></li>
+                        <li>
+                            <label for="fav">Ulubione</label>
+                            <input 
+                                type="checkbox" 
+                                name="<?=full_encode($entry['name'])?>"
+                                <?php if (
+                                    isset($favs) &&
+                                    isset($favs[$entry['name']])
+                                ): ?>
+                                    checked=""
+                                <?php endif ?>
+                                class="fav-box" 
+                                form="fav-form"
+                            >
+                        </li>
                     </ul>
                 <?php endforeach ?>
+                <form id="fav-form" name="fav-form" method="POST" action="/forum">
+                    <input type="hidden" name="form" value="fav">
+                    <input type="submit" value="Zapisz ulubione">
+                </form>
             </div>
             <?php
                 $cur = $model['page'];
@@ -42,6 +61,8 @@
         </div>     
         <div id="form-bar">
             <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
+                <input type="hidden" name="form" value="upload">
+
                 <label for="username">Autor</label><br>
                 <input type="text" required name="username" id="username-input"/><br>
 

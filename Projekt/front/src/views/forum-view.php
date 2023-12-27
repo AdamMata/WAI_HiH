@@ -15,6 +15,10 @@
             </article>
             <div id="gallery">
                 <?php foreach ($gallery as $entry):?>
+                <?php echo $entry['meta']['availability']; ?>
+                <?php if ($entry['meta']['availability'] === 'public' ||
+                        ($user != null && $entry['meta']['author'] === $user)): ?>
+
                     <ul class="gallery-entry">
                         <li>
                             <a href="../images/watermarks/<?=$entry['name']?>" target="_blank">
@@ -28,10 +32,8 @@
                             <input 
                                 type="checkbox" 
                                 name="<?=full_encode($entry['name'])?>"
-                                <?php if (
-                                    isset($favs) &&
-                                    isset($favs[$entry['name']])
-                                ): ?>
+                                <?php if ( isset($favs) &&
+                                    isset($favs[$entry['name']]) ): ?>
                                     checked=""
                                 <?php endif ?>
                                 class="fav-box" 
@@ -39,6 +41,7 @@
                             >
                         </li>
                     </ul>
+                <?php endif ?>
                 <?php endforeach ?>
                 <form id="fav-form" name="fav-form" method="POST" action="/forum">
                     <input type="hidden" name="form" value="fav">
@@ -80,9 +83,9 @@
                 <input type="file" name="screenshot" id="screenshot-input"/><br>
 
                 <?php if (isset($user)): ?>
-                    <input type="radio" name="availability" id="public">
+                    <input type="radio" name="availability" value="public">
                     <label for="public">Publiczne</label>
-                    <input type="radio" name="availability" id="private">
+                    <input type="radio" name="availability" value="private">
                     <label for="private">Prywatne</label><br>
                 <?php endif ?>
                 <input type="submit" value="Wyślij" id="submit-button">

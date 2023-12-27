@@ -3,7 +3,7 @@
 require_once 'gallery.php';
 require_once 'db.php';
 
-function handle_form($username, $title, $watermark, $screenshot) {
+function handle_form($username, $title, $watermark, $screenshot, $availability) {
 	$wrong_type = !check_extension($screenshot, get_extension($screenshot));
 	$too_big = ($screenshot['size'] > 1000000);
 
@@ -12,7 +12,7 @@ function handle_form($username, $title, $watermark, $screenshot) {
 	if ($too_big && !$wrong_type) return Validation::TOO_BIG;
 
 	$saved_file_name = save_images($screenshot, $username, $watermark);
-	save_image_metadata($saved_file_name, $username, $title);
+	save_image_metadata($saved_file_name, $username, $title, $availability);
 
 	return Validation::OK;
 }
@@ -57,11 +57,12 @@ function get_max_page() {
 	return count($db->screenshots->find());
 }
 
-function save_image_metadata($saved_file_name, $username, $title) {
+function save_image_metadata($saved_file_name, $username, $title, $availability) {
 	$db = get_db();
 	$meta = [
 		'author' => $username,
 		'title' => $title,
+		'availability' => $availability,
 	];
 	$image = [
 		'name' => $saved_file_name,

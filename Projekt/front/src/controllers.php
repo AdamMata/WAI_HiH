@@ -2,7 +2,7 @@
 
 require_once 'business/business.php';
 
-// print_r(get_db()->users->find()->toArray());
+// print_r(get_db()->screenshots->find());
 
 /* ! DANGER ZONE ! */
 // get_db()->users->drop();
@@ -107,6 +107,7 @@ function forum(&$model) {
 	$model['page'] = $page;
 	if (isset($_SESSION['favs'])) {$model['favs'] = $_SESSION['favs'];};
 	$model['max'] = get_max_page();
+	$model['user'] = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 	return "forum-view";
 }
 
@@ -115,7 +116,9 @@ function receive_form() {
 	$title = $_POST['title'];
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
-	return handle_form($username, $title, $watermark, $screenshot);
+	$availability = $_POST['availability'];
+	echo $availability;
+	return handle_form($username, $title, $watermark, $screenshot, $availability);
 }
 
 function save_favs() {

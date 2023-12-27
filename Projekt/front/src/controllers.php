@@ -2,8 +2,6 @@
 
 require_once 'business/business.php';
 
-// print_r(get_db()->screenshots->find());
-
 /* ! DANGER ZONE ! */
 // get_db()->users->drop();
 // get_db()->screenshots->drop();
@@ -86,7 +84,6 @@ class Validation {
 
 function forum(&$model) {
 	$page = 1;
-	$_SESSION['favs'] = [];
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET': 
 			$model['validation'] = '';
@@ -116,8 +113,7 @@ function receive_form() {
 	$title = $_POST['title'];
 	$watermark = $_POST['watermark'];
 	$screenshot = $_FILES['screenshot'];
-	$availability = $_POST['availability'];
-	echo $availability;
+	$availability = isset($_POST['availability'])? $_POST['availability'] : 'public';
 	return handle_form($username, $title, $watermark, $screenshot, $availability);
 }
 

@@ -53,8 +53,12 @@ function get_gallery() {
 
 function get_max_page() {
 	$db = get_db();
-
-	return count($db->screenshots->find());
+	
+	$gallery = $db->screenshots->find();
+	foreach ($gallery as $entry) {
+		$size++;
+	}
+	return ceil($size/page_size);
 }
 
 function save_image_metadata($saved_file_name, $username, $title, $availability) {

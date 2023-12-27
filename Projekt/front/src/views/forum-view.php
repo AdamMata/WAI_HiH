@@ -15,7 +15,6 @@
             </article>
             <div id="gallery">
                 <?php foreach ($gallery as $entry):?>
-                <?php echo $entry['meta']['availability']; ?>
                 <?php if ($entry['meta']['availability'] === 'public' ||
                         ($user != null && $entry['meta']['author'] === $user)): ?>
 
@@ -49,11 +48,12 @@
                 </form>
             </div>
             <?php
-                $cur = $model['page'];
-                $min = 1; $max = $model['max'];
+                $cur = $page;
+                $min = 1; $max;
                 if ($cur > $min) $prev = $cur - 1;
                 if ($cur < $max) $next = $cur + 1;
             ?>
+            <?=$min?>
             <?php if(isset($prev)): ?>
                 <a href="/forum?page=<?=$prev?>"><?=$prev?></a>
             <?php endif ?>
@@ -61,6 +61,7 @@
             <?php if(isset($next)): ?>
                 <a href="/forum?page=<?=$next?>"><?=$next?></a>
             <?php endif ?>
+            <?=$max?>
         </div>     
         <div id="form-bar">
             <form id="upload-form" method="POST" action="/forum" enctype="multipart/form-data">

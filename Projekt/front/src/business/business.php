@@ -105,11 +105,12 @@ function login_user($login, $password) {
 	}	
 }
 
-function register_user($login, $password) {
+function register_user($login, $password, $email) {
 	$db = get_db();
 
 	$user = [
 		'login' => $login,
+		'email' => $email,
 		'pwhash' => password_hash($password, hashing_algo)
 	];
 

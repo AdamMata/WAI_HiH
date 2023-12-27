@@ -2,6 +2,9 @@
 
 require_once 'business/business.php';
 
+// print_r(get_db()->users->find()->toArray());
+
+/* ! DANGER ZONE ! */
 // get_db()->users->drop();
 // get_db()->screenshots->drop();
 function index(&$model) {
@@ -30,7 +33,7 @@ function register(&$model) {
 				$auth = Auth::PWS_DIFFER;
 			}
 			else {
-				$auth = register_user($_POST['login'], $_POST['password']);
+				$auth = register_user($_POST['login'], $_POST['password'], $_POST['email']);
 			}
 
 			if ($auth === Auth::OK){

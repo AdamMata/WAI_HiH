@@ -7,6 +7,9 @@
 					<input type="text" required name="login">
 					<label for="login">Login</label><br>
 
+					<input type="text" required name="email">
+					<label for="email">E-mail</label><br>
+
 					<input type="password" required name="password">
 					<label for="password">Hasło</label><br>
 					<input type="password" required name="repeat">

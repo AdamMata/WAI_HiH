@@ -55,6 +55,7 @@ function get_max_page() {
 	$db = get_db();
 	
 	$gallery = $db->screenshots->find();
+	$size = 0;
 	foreach ($gallery as $entry) {
 		$size++;
 	}

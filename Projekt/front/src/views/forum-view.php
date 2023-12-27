@@ -26,6 +26,9 @@
                         </li>
                         <li>Autor: <?=$entry['meta']['author']?></li>
                         <li>Tytuł: <?=$entry['meta']['title']?></li>
+                        <?php if ($entry['meta']['availability'] === 'private'): ?>
+                            <li>Prywatne</li>
+                        <?php endif ?>
                         <li>
                             <label for="fav">Ulubione</label>
                             <input 

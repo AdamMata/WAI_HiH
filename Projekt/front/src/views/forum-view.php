@@ -60,11 +60,15 @@
             <?php endif ?>
         </div>     
         <div id="form-bar">
-            <form id="form" method="POST" action="/forum" enctype="multipart/form-data">
+            <form id="upload-form" method="POST" action="/forum" enctype="multipart/form-data">
                 <input type="hidden" name="form" value="upload">
 
                 <label for="username">Autor</label><br>
-                <input type="text" required name="username" id="username-input"/><br>
+                <input type="text" required name="username" id="username-input"
+                    <?php if (isset($user)): ?>
+                        value="<?=$user?>"
+                    <?php endif ?>
+                /><br>
 
                 <label for="title">Tytuł</label><br>
                 <input type="text" name="title" id="title-input"/><br>
@@ -75,6 +79,12 @@
                 <label for="screenshot">Zdjęcie</label><br>
                 <input type="file" name="screenshot" id="screenshot-input"/><br>
 
+                <?php if (isset($user)): ?>
+                    <input type="radio" name="availability" id="public">
+                    <label for="public">Publiczne</label>
+                    <input type="radio" name="availability" id="private">
+                    <label for="private">Prywatne</label><br>
+                <?php endif ?>
                 <input type="submit" value="Wyślij" id="submit-button">
                 <input type="button" value="Wyczyść" id="clear-button">
             </form>

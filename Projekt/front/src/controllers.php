@@ -100,7 +100,7 @@ function forum(&$model) {
 					break;
 				}
 	}
-	$model['gallery'] = get_gallery_page($page);
+	$model['gallery'] = get_gallery_page($page, isset($_SESSION['user']) ? $_SESSION['user'] : null);
 	$model['page'] = $page;
 	if (isset($_SESSION['favs'])) {$model['favs'] = $_SESSION['favs'];};
 	$model['max'] = get_max_page();

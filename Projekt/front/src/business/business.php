@@ -18,14 +18,27 @@ function handle_form($username, $title, $watermark, $screenshot, $availability) 
 }
 
 const page_size = 2;
-function get_gallery_page($page) {
+function get_gallery_page($page, $user) {
 	$files = scandir(images_dir.'originals');
 	$files = array_diff($files, array('.', '..'));
 
 	$db = get_db();
-	$query = [
+	$query = [];
+	// show if public, or private by logged in user
+	if ($user === null) {
+		$query = [
+			'meta.availability' => 'public'
+		];
+	}
+	else {
+		$query = [
+			'$or' => [
+				['meta.availability' => 'public'],
+				['meta.availability' => 'private', 'meta.author' => $user]
+			]
+		];
+	}
 
-	];
 	$opts = [
 		'skip' => ($page - 1)*page_size,
 		'limit' => page_size

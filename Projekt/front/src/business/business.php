@@ -64,10 +64,26 @@ function get_gallery() {
 	return $gallery;
 }
 
-function get_max_page() {
+function get_max_page($user = null) {
 	$db = get_db();
 	
-	$gallery = $db->screenshots->find();
+	$query = [];
+	// show if public, or private by logged in user
+	if ($user === null) {
+		$query = [
+			'meta.availability' => 'public'
+		];
+	}
+	else {
+		$query = [
+			'$or' => [
+				['meta.availability' => 'public'],
+				['meta.availability' => 'private', 'meta.author' => $user]
+			]
+		];
+	}
+
+	$gallery = $db->screenshots->find($query);
 	$size = 0;
 	foreach ($gallery as $entry) {
 		$size++;

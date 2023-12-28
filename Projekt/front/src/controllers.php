@@ -100,11 +100,14 @@ function forum(&$model) {
 					break;
 				}
 	}
-	$model['gallery'] = get_gallery_page($page, isset($_SESSION['user']) ? $_SESSION['user'] : null);
+	$user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+	$model['gallery'] = get_gallery_page($page, $user);
 	$model['page'] = $page;
-	if (isset($_SESSION['favs'])) {$model['favs'] = $_SESSION['favs'];};
-	$model['max'] = get_max_page();
-	$model['user'] = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+	if (isset($_SESSION['favs'])) {
+		$model['favs'] = $_SESSION['favs'];
+	}
+	$model['max'] = get_max_page($user);
+	$model['user'] = $user;
 	return "forum-view";
 }
 

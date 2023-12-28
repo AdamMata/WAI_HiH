@@ -56,15 +56,20 @@
                 if ($cur > $min) $prev = $cur - 1;
                 if ($cur < $max) $next = $cur + 1;
             ?>
-            <?=$min?>
+            <?=$min.' |'?>
             <?php if(isset($prev)): ?>
-                <a href="/forum?page=<?=$prev?>"><?=$prev?></a>
+                <a href="/forum?page=<?=$prev?>"><?=$prev.'<'?></a>
             <?php endif ?>
             <?=$cur?>
             <?php if(isset($next)): ?>
-                <a href="/forum?page=<?=$next?>"><?=$next?></a>
+                <a href="/forum?page=<?=$next?>"><?='>'.$next?></a>
             <?php endif ?>
-            <?=$max?>
+
+            <?php if ($max != 0): ?>
+                <?='| '.$max?>
+            <?php else: ?>
+                <?='| gallery empty'?>
+            <?php endif ?>
         </div>     
         <div id="form-bar">
             <form id="upload-form" method="POST" action="/forum" enctype="multipart/form-data">
@@ -96,7 +101,9 @@
                 <input type="button" value="Wyczyść" id="clear-button">
             </form>
             <span id="validation">
-                <?= $validation ?>
+                <?php if (isset($validation)): ?>
+                    <?= $validation ?>
+                <?php endif ?>
             </span>
         </div>
     </div>

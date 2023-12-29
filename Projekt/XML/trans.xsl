@@ -32,13 +32,10 @@
 					<xsl:attribute name="src">
 						<xsl:value-of select="image[@type='logo']"/>
 					</xsl:attribute>
-					<xsl:attribute name="height">
-						20
-					</xsl:attribute>
 				</xsl:element>
 			</td>
 			<td>
-				<xsl:apply-templates select="contributors"/>
+				<xsl:apply-templates select="contributors/author"/>
 			</td>
 			<td>
 				<xsl:call-template name="name-as-link">
@@ -47,19 +44,16 @@
 				</xsl:call-template>
 			</td>
 			<td>
-				<xsl:value-of select="./contributors/release"/> <!--TODO-->
+				<xsl:apply-templates select="contributors/release"/>
+				<!-- <xsl:value-of select="./contributors/release[@stage='full']"/> -->
 			</td>
 		</tr>
-	</xsl:template>
-
-	<xsl:template match="contributors">
-			<xsl:apply-templates select="author"/>
 	</xsl:template>
 
 	<xsl:template match="author">
 		<xsl:element name="span">
 			<xsl:attribute name="class">
-				author-type
+				type
 			</xsl:attribute>
 			<xsl:value-of select="@type"/>
 		</xsl:element>
@@ -69,6 +63,22 @@
 			<xsl:with-param name="link" select="./link"/>
 		</xsl:call-template>		
 
+	</xsl:template>
+
+	<xsl:template match="release">
+		<xsl:choose>
+			<xsl:when test="@stage='full'">
+				<xsl:value-of select="."/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:element name="span">
+					<xsl:attribute name="class">
+						type
+					</xsl:attribute>
+					<xsl:value-of select="@stage"/>
+				</xsl:element>
+			</xsl:otherwise>
+		</xsl:choose> 
 	</xsl:template>
 
 	<xsl:template name="name-as-link">

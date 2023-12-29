@@ -12,7 +12,7 @@
 					<tr>
 						<th>Tytuł</th>
 						<th>Logo</th>
-						<th>Studio</th>
+						<th>Autor</th>
 						<th>Wydawca</th>
 						<th>Data wydania</th>
 						<th>Wymagania</th>
@@ -58,16 +58,21 @@
 			</xsl:attribute>
 			<xsl:value-of select="@type"/>
 		</xsl:element>
-		<xsl:value-of select="text()"/>
-		<xsl:variable name="link" select="./link"/>
-		<xsl:if test="link != ''">
-			<xsl:element name="a">
-				<xsl:attribute name="href">
-					<xsl:value-of select="./link"/>
-				</xsl:attribute>
-				link
-			</xsl:element>
-		</xsl:if>
 
+		<xsl:variable name="link" select="./link"/>
+		<xsl:choose>
+			<xsl:when test="link != ''">
+				<xsl:element name="a">
+					<xsl:attribute name="href">
+						<xsl:value-of select="link"/>
+					</xsl:attribute>
+					<xsl:value-of select="text()"/>
+				</xsl:element>
+			</xsl:when> 
+			<xsl:otherwise>
+				<xsl:value-of select="text()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+		
 	</xsl:template>
 </xsl:stylesheet>

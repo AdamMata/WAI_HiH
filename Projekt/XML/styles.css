@@ -2,6 +2,16 @@ table {
 	border: 5px solid #000000;
 }
 
+td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+	display:block; 
+	width:100%; 
+	height:auto;
+}
+
 .author-type {
 	color: white;
 	background-color: gray;

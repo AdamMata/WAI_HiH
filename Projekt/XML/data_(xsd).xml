@@ -1,3 +1,4 @@
+<?xml-stylesheet type="text/xsl" href="./trans.xsl"?>
 <games xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
     <game title="Satisfactory">
         <image type="logo">images/Satisfactory-logo.jpg</image>
@@ -29,7 +30,7 @@
         </genres>
     </game>
     <game title="Ultrakill">
-        <image type="logo">images/Ultrakill-logo.jpg</image>
+        <image type="logo">images/Ultrakill-logo.png</image>
         <contributors>
             <author type="indie">
                 Arsi "Hakita" Patala
@@ -58,7 +59,7 @@
         </genres>
     </game>
     <game title="Prison Architect">
-        <image type="logo">images/Prison_Architect-logo.jpg</image>
+        <image type="logo">images/Prison_Architect-logo.png</image>
         <contributors>
             <author type="studio">
                 Introversion Software

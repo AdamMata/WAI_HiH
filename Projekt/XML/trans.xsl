@@ -10,8 +10,7 @@
 				<h1>Gry</h1>
 				<table>
 					<tr>
-						<th>Tytuł</th>
-						<th>Logo</th>
+						<th></th>
 						<th>Autor</th>
 						<th>Wydawca</th>
 						<th>Data wydania</th>
@@ -28,9 +27,6 @@
 
 	<xsl:template match="game">
 		<tr>
-			<xsl:element name="td">
-				<xsl:value-of select="@title"/>
-			</xsl:element>
 			<td>
 				<xsl:element name="img">
 					<xsl:attribute name="src">
@@ -43,6 +39,15 @@
 			</td>
 			<td>
 				<xsl:apply-templates select="contributors"/>
+			</td>
+			<td>
+				<xsl:call-template name="name-as-link">
+					<xsl:with-param name="name" select="./contributors/publisher/text()"/>
+					<xsl:with-param name="link" select="./contributors/publisher/link"/>
+				</xsl:call-template>
+			</td>
+			<td>
+				<xsl:value-of select="./contributors/release"/> <!--TODO-->
 			</td>
 		</tr>
 	</xsl:template>
@@ -59,20 +64,29 @@
 			<xsl:value-of select="@type"/>
 		</xsl:element>
 
-		<xsl:variable name="link" select="./link"/>
+		<xsl:call-template name="name-as-link">
+			<xsl:with-param name="name" select="text()"/>
+			<xsl:with-param name="link" select="./link"/>
+		</xsl:call-template>		
+
+	</xsl:template>
+
+	<xsl:template name="name-as-link">
+		<xsl:param name="name"/>
+		<xsl:param name="link"/>
 		<xsl:choose>
-			<xsl:when test="link != ''">
+			<xsl:when test="$link != ''">
 				<xsl:element name="a">
 					<xsl:attribute name="href">
-						<xsl:value-of select="link"/>
+						<xsl:value-of select="$link"/>
 					</xsl:attribute>
-					<xsl:value-of select="text()"/>
+					<xsl:value-of select="$name"/>
 				</xsl:element>
 			</xsl:when> 
 			<xsl:otherwise>
-				<xsl:value-of select="text()"/>
+				<xsl:value-of select="$name"/>
 			</xsl:otherwise>
 		</xsl:choose>
-		
 	</xsl:template>
+
 </xsl:stylesheet>

@@ -12,6 +12,13 @@ td img{
 	height:auto;
 }
 
+table ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;;
+}
+
 .type {
 	color: white;
 	background-color: gray;

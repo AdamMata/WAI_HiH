@@ -15,7 +15,6 @@
 						<th>Wydawca</th>
 						<th>Data wydania</th>
 						<th>Wymagania</th>
-						<th>Silnik</th>
 						<th>Gatunek</th>
 					</tr>
 					<xsl:apply-templates select="games/game"/>
@@ -46,6 +45,16 @@
 			<td>
 				<xsl:apply-templates select="contributors/release"/>
 				<!-- <xsl:value-of select="./contributors/release[@stage='full']"/> -->
+			</td>
+			<td>
+				<ul>
+					<xsl:apply-templates select="requirements/platforms/platform"/>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<xsl:apply-templates select="genres/genre"/>
+				</ul>
 			</td>
 		</tr>
 	</xsl:template>
@@ -79,6 +88,33 @@
 				</xsl:element>
 			</xsl:otherwise>
 		</xsl:choose> 
+	</xsl:template>
+
+	<xsl:template match="platform">
+		<xsl:element name="li">
+			<xsl:attribute name="class">
+				platform
+			</xsl:attribute>
+			<xsl:value-of select="@system"/>
+			<xsl:text> </xsl:text>
+			<xsl:value-of select="."/>
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="genre">
+		<xsl:element name="li">
+			<xsl:attribute name="class">
+				genre
+			</xsl:attribute>
+			<xsl:element name="span">
+				<xsl:attribute name="class">
+					type
+				</xsl:attribute>
+				<xsl:value-of select="@category"/>
+			</xsl:element>
+			<xsl:text> </xsl:text>
+			<xsl:value-of select="."/>
+		</xsl:element>
 	</xsl:template>
 
 	<xsl:template name="name-as-link">

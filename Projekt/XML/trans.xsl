@@ -15,6 +15,7 @@
 						<th>Wydawca</th>
 						<th>Data wydania</th>
 						<th>Wymagania</th>
+						<th>Silnik</th>
 						<th>Gatunek</th>
 					</tr>
 					<xsl:apply-templates select="games/game"/>
@@ -54,6 +55,9 @@
 				<xsl:apply-templates select="requirements/platforms"/>
 			</td>
 			<td>
+				<xsl:apply-templates select="requirements/engine"/>
+			</td>
+			<td>
 				<ul>
 					<xsl:apply-templates select="genres/genre"/>
 				</ul>
@@ -68,7 +72,7 @@
 			</xsl:attribute>
 			<xsl:value-of select="."/>
 		</xsl:element>
-			<xsl:text> </xsl:text>
+		<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="author">
@@ -113,6 +117,34 @@
 			<xsl:element name="br"/>
 			
 		</xsl:for-each>
+	</xsl:template>
+
+	<xsl:template match="engine">
+		<xsl:choose>
+			<xsl:when test="@system='Unity'">
+				<xsl:element name="img">
+					<xsl:attribute name="src">
+						images/Unity-logo.png
+					</xsl:attribute>
+					<xsl:attribute name="style">
+						width: 70px;
+					</xsl:attribute>
+				</xsl:element>
+			</xsl:when>
+			<xsl:when test="@system='Unreal Engine'">
+				<xsl:element name="img">
+					<xsl:attribute name="src">
+						images/Unreal_Engine-logo.png
+					</xsl:attribute>
+					<xsl:attribute name="style">
+						width: 70px;
+					</xsl:attribute>
+				</xsl:element>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="@system"/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="genre">

@@ -9,9 +9,9 @@ td img{
 
 	display:block; 
 	width:100%; 
+	
+	max-width: 200px;
 	height:auto;
-
-	max-width: 300px;
 }
 
 table ul {

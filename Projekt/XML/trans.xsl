@@ -19,6 +19,9 @@
 					</tr>
 					<xsl:apply-templates select="games/game"/>
 				</table>
+				<xsl:text>znaleziono </xsl:text>
+				<xsl:value-of select="format-number(count(//*[@type]), '##,00')"/>
+				<xsl:text> użyć typów: </xsl:text>
 				<xsl:apply-templates select="//@type"/>
 			</body>
 			
@@ -26,6 +29,7 @@
 	</xsl:template>
 
 	<xsl:template match="game">
+		<b><xsl:number value="position()"/></b>
 		<tr>
 			<td>
 				<xsl:element name="img">
@@ -63,8 +67,8 @@
 				type
 			</xsl:attribute>
 			<xsl:value-of select="."/>
-			<xsl:text> </xsl:text>
 		</xsl:element>
+			<xsl:text> </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="author">

@@ -11,12 +11,15 @@
 				<xsl:apply-templates select="games"/>
 				<div>
 					<xsl:text>znaleziono </xsl:text>
-					<xsl:value-of select="format-number(count(//*[@type]), '##,00')"/>
+					<xsl:value-of select="format-number(count(//*[@type]), '#0,00')"/>
 					<xsl:text> użyć typów: </xsl:text>
 					<xsl:apply-templates select="//@type"/>
+					<br/>
+					<xsl:text>w tym </xsl:text>
+						<xsl:value-of select="format-number(count(//link), '0')"/>
+					<xsl:text> z linków</xsl:text>
 				</div>
 			</body>
-			
 		</html>
 	</xsl:template>
 

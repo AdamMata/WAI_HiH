@@ -8,25 +8,31 @@
 			</head>	
 			<body>
 				<h1>Gry</h1>
-				<table>
-					<tr>
-						<th></th>
-						<th>Autor</th>
-						<th>Wydawca</th>
-						<th>Data wydania</th>
-						<th>Wymagania</th>
-						<th>Silnik</th>
-						<th>Gatunek</th>
-					</tr>
-					<xsl:apply-templates select="games/game"/>
-				</table>
-				<xsl:text>znaleziono </xsl:text>
-				<xsl:value-of select="format-number(count(//*[@type]), '##,00')"/>
-				<xsl:text> użyć typów: </xsl:text>
-				<xsl:apply-templates select="//@type"/>
+				<xsl:apply-templates select="games"/>
+				<div>
+					<xsl:text>znaleziono </xsl:text>
+					<xsl:value-of select="format-number(count(//*[@type]), '##,00')"/>
+					<xsl:text> użyć typów: </xsl:text>
+					<xsl:apply-templates select="//@type"/>
+				</div>
 			</body>
 			
 		</html>
+	</xsl:template>
+
+	<xsl:template match="games">
+		<table>
+			<tr>
+				<th></th>
+				<th>Autor</th>
+				<th>Wydawca</th>
+				<th>Data wydania</th>
+				<th>Wymagania</th>
+				<th>Silnik</th>
+				<th>Gatunek</th>
+			</tr>
+			<xsl:apply-templates select="game"/>
+		</table>
 	</xsl:template>
 
 	<xsl:template match="game">

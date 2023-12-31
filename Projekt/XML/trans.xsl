@@ -32,6 +32,7 @@
 				<th>Gatunek</th>
 			</tr>
 			<xsl:apply-templates select="game"/>
+			<xsl:apply-templates select="game[last()]" mode="last"/>
 		</table>
 	</xsl:template>
 
@@ -49,10 +50,7 @@
 				<xsl:apply-templates select="contributors/author"/>
 			</td>
 			<td>
-				<xsl:call-template name="name-as-link">
-					<xsl:with-param name="name" select="./contributors/publisher/text()"/>
-					<xsl:with-param name="link" select="./contributors/publisher/link"/>
-				</xsl:call-template>
+				<xsl:apply-templates select="contributors/publisher"/>
 			</td>
 			<td>
 				<xsl:apply-templates select="contributors/release"/>
@@ -69,6 +67,22 @@
 				</ul>
 			</td>
 		</tr>
+	</xsl:template>
+
+	<xsl:template match="game" mode="last">
+		<xsl:text>Tabelę </xsl:text> 
+		<xsl:variable name="count" select="count(../game)"/>
+		<xsl:value-of select="$count"/>
+		<xsl:choose>
+			<xsl:when test="$count = 1">
+				<xsl:text> gry</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text> gier</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text> zakończono na grze </xsl:text>
+		<xsl:value-of select="@title"/>
 	</xsl:template>
 
 	<xsl:template match="@type">
@@ -94,6 +108,21 @@
 			<xsl:with-param name="link" select="./link"/>
 		</xsl:call-template>		
 
+	</xsl:template>
+
+	<xsl:template match="publisher">
+		<xsl:element name="span">
+			<xsl:attribute name="class">
+				type
+			</xsl:attribute>
+			<xsl:text>company</xsl:text>
+		</xsl:element>
+
+		<xsl:call-template name="name-as-link">
+			<xsl:with-param name="name" select="text()"/>
+			<xsl:with-param name="link" select="./link"/>
+		</xsl:call-template>
+		
 	</xsl:template>
 
 	<xsl:template match="release">

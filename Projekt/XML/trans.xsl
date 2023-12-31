@@ -19,8 +19,9 @@
 					</tr>
 					<xsl:apply-templates select="games/game"/>
 				</table>
+				<xsl:apply-templates select="//@type"/>
 			</body>
-
+			
 		</html>
 	</xsl:template>
 
@@ -44,12 +45,9 @@
 			</td>
 			<td>
 				<xsl:apply-templates select="contributors/release"/>
-				<!-- <xsl:value-of select="./contributors/release[@stage='full']"/> -->
 			</td>
 			<td>
-				<ul>
-					<xsl:apply-templates select="requirements/platforms/platform"/>
-				</ul>
+				<xsl:apply-templates select="requirements/platforms"/>
 			</td>
 			<td>
 				<ul>
@@ -57,6 +55,16 @@
 				</ul>
 			</td>
 		</tr>
+	</xsl:template>
+
+	<xsl:template match="@type">
+		<xsl:element name="span">
+			<xsl:attribute name="class">
+				type
+			</xsl:attribute>
+			<xsl:value-of select="."/>
+			<xsl:text> </xsl:text>
+		</xsl:element>
 	</xsl:template>
 
 	<xsl:template match="author">
@@ -90,15 +98,17 @@
 		</xsl:choose> 
 	</xsl:template>
 
-	<xsl:template match="platform">
-		<xsl:element name="li">
-			<xsl:attribute name="class">
-				platform
-			</xsl:attribute>
+	<xsl:template match="platforms">
+		<xsl:for-each select="platform">
+			<xsl:sort select="@system" order="ascending"/>
+			<xsl:number value="position()"/>
+			
 			<xsl:value-of select="@system"/>
 			<xsl:text> </xsl:text>
 			<xsl:value-of select="."/>
-		</xsl:element>
+			<xsl:element name="br"/>
+			
+		</xsl:for-each>
 	</xsl:template>
 
 	<xsl:template match="genre">
@@ -106,13 +116,15 @@
 			<xsl:attribute name="class">
 				genre
 			</xsl:attribute>
-			<xsl:element name="span">
-				<xsl:attribute name="class">
-					type
-				</xsl:attribute>
-				<xsl:value-of select="@category"/>
-			</xsl:element>
-			<xsl:text> </xsl:text>
+			<xsl:if test="@category != ''">
+				<xsl:element name="span">
+					<xsl:attribute name="class">
+						type
+					</xsl:attribute>
+					<xsl:value-of select="@category"/>
+				</xsl:element>
+				<xsl:text> </xsl:text>
+			</xsl:if>
 			<xsl:value-of select="."/>
 		</xsl:element>
 	</xsl:template>

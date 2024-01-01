@@ -40,9 +40,9 @@
 	</xsl:template>
 
 	<xsl:template match="game">
-		<b><xsl:number value="position()"/></b>
 		<tr>
 			<td>
+				<b><xsl:number value="position()" format="a"/></b>
 				<xsl:element name="img">
 					<xsl:attribute name="src">
 						<xsl:value-of select="image[@type='logo']"/>
@@ -73,8 +73,9 @@
 	</xsl:template>
 
 	<xsl:template match="game" mode="last">
-		<xsl:text>Tabelę </xsl:text> 
-		<xsl:variable name="count" select="count(../game)"/>
+		<xsl:text>Tabelę </xsl:text>
+		<xsl:variable name="games" select="../game"/>
+		<xsl:variable name="count" select="count($games)"/>
 		<xsl:value-of select="$count"/>
 		<xsl:choose>
 			<xsl:when test="$count = 1">

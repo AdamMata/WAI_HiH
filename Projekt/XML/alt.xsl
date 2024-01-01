@@ -38,22 +38,25 @@
 		<xsl:variable name="stage">
 			<xsl:value-of select="contributors/release/@stage"/>
 		</xsl:variable>
-
-		<xsl:element name="{$title}">
+		<xsl:element name="{translate($title, ' ', '-')}">
 			<xsl:attribute name="{$stage}">
 				<xsl:value-of select="contributors/release"/>
 			</xsl:attribute>
-			<xsl:copy-of select="genres"/>
-			<xsl:apply-templates select="requirements/engine"/>
+			<xsl:copy-of select="requirements/engine"/>
+			<genres>
+				<xsl:apply-templates select="genres/genre"/>
+			</genres>
 		</xsl:element>
 	</xsl:template>
 
-	<xsl:template match="engine">
-		<xsl:copy>
-			<xsl:attribute name="system">
-				<xsl:value-of select="@system"/>
-			</xsl:attribute>
-		</xsl:copy>
+	<xsl:template match="genre">
+		<xsl:if test="@category">
+			<xsl:copy>
+				<xsl:attribute name="{@category}">
+					<xsl:value-of select="."/>
+				</xsl:attribute>
+			</xsl:copy>
+		</xsl:if>
 	</xsl:template>
 
 </xsl:stylesheet>
